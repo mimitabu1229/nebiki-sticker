@@ -1,0 +1,2534 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>値引きシール係｜割引シールを貼り続ける無料ブラウザゲーム</title>
+<meta name="description" content="スーパーの夜、消費期限が近づいた惣菜に割引シールを貼り続けるだけの、無料のブラウザミニゲーム。ゴールはなし。単調な作業で気持ちが落ち着く「値引きシール係」の世界へ。">
+<meta name="theme-color" content="#d7191f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="値引きシール係">
+<meta property="og:title" content="値引きシール係｜割引シールを貼り続ける無料ブラウザゲーム">
+<meta property="og:description" content="スーパーの夜、惣菜に割引シールを貼り続けるだけの無料ミニゲーム。ゴールはなし。ライバルや、シールはがし爺も現れます。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="値引きシール係｜割引シールを貼り続ける無料ブラウザゲーム">
+<meta name="twitter:description" content="スーパーの夜、惣菜に割引シールを貼り続けるだけの無料ミニゲーム。ゴールはなし。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "値引きシール係",
+  "description": "スーパーの夜、消費期限が近づいた惣菜に割引シールを貼り続けるだけの、無料のブラウザミニゲーム。ゴールはなし。",
+  "inLanguage": "ja",
+  "genre": "カジュアルゲーム",
+  "gamePlatform": "Webブラウザ",
+  "playMode": "SinglePlayer",
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+}
+</script>
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --red: #d7191f;
+  --red-d: #a80f16;
+  --yellow: #ffe11a;
+  --orange: #f26a1b;
+  --blue: #2358b8;
+  --blue-d: #173d82;
+  --brown: #8a5a2b;
+  --brown-d: #5e3b17;
+  --green: #1f7a4d;
+  --green-d: #15583a;
+  --usblue: #1d3f91;
+  --teal: #12857f;
+  --teal-d: #0b5a56;
+  --ink: #14233c;
+  --ink-2: #4b5b6b;
+  --wall: #e8efeb;
+  --wall-line: rgba(20, 35, 60, .06);
+  --steel: #c5d0d2;
+  --steel-d: #8a9ca0;
+  --case-hi: #fdfefe;
+  --case-lo: #e1ebee;
+  --led-bg: #0d1512;
+  --led: #ffb43a;
+  --led-dim: #79b09a;
+  --font-display: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-led: "DotGothic16", "Hiragino Sans", "Yu Gothic", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background-color: var(--wall);
+  background-image:
+    linear-gradient(var(--wall-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--wall-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.store {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-inline: 16px;
+  padding-block: 0 24px;
+}
+
+/* ---------- 看板 ---------- */
+.awning {
+  height: 36px;
+  margin-inline: -16px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='36'><path d='M0 0H28V22a14 14 0 0 1-28 0z' fill='%23d7191f'/><path d='M28 0H56V22a14 14 0 0 1-28 0z' fill='%23ffffff' stroke='%23c5d0d2' stroke-width='1'/></svg>") repeat-x 0 0 / 56px 36px;
+  filter: drop-shadow(0 3px 2px rgba(20, 35, 60, .18));
+}
+
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px 24px;
+  align-items: center;
+  padding-block: 20px 16px;
+}
+
+.brand .eyebrow {
+  margin: 0 0 4px;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .18em;
+  color: var(--red);
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(34px, 7vw, 54px);
+  line-height: 1.05;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.brand h1 span { color: var(--red); }
+
+.brand .howto {
+  margin: 8px 0 0;
+  font-weight: 700;
+  color: var(--ink-2);
+  max-width: 34em;
+}
+
+/* ---------- LED 表示 ---------- */
+.led {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 6px 22px;
+  padding: 12px 18px 14px;
+  background: var(--led-bg);
+  border-radius: 8px;
+  border: 3px solid #2b3a35;
+  box-shadow: inset 0 0 0 2px #000, 0 2px 0 var(--steel-d);
+}
+
+.led > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.led dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--led-dim);
+}
+
+.led dd {
+  margin: 0;
+  font-family: var(--font-led);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--led);
+  text-shadow: 0 0 8px rgba(255, 180, 58, .55);
+  font-variant-numeric: tabular-nums;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.led .sticker { --u: 1.5px; }
+
+/* ---------- 店内放送 ---------- */
+.announce {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--red);
+  color: #fff8c9;
+  border-radius: 6px;
+  border-bottom: 3px solid var(--red-d);
+}
+
+.announce .badge {
+  flex: none;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  padding: 2px 8px;
+  background: #fff;
+  color: var(--red);
+  border-radius: 3px;
+}
+
+.announce p { margin: 0; flex: 1; font-weight: 700; min-width: 0; }
+
+.announce button {
+  flex: none;
+  font: 700 12px var(--font-body);
+  letter-spacing: .06em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 2px solid #fff8c9;
+  background: transparent;
+  color: #fff8c9;
+  cursor: pointer;
+}
+
+.announce button[aria-pressed="false"] { background: #fff8c9; color: var(--red-d); }
+
+/* ---------- ショーケース ---------- */
+.case-wrap { position: relative; margin-top: 16px; }
+
+.case {
+  background: var(--steel);
+  border-radius: 10px;
+  padding: 0 8px 10px;
+  border: 1px solid var(--steel-d);
+  box-shadow: 0 10px 0 -4px var(--steel-d), 0 14px 18px rgba(20, 35, 60, .18);
+}
+
+.case::before {
+  content: "";
+  display: block;
+  height: 10px;
+  margin-inline: 24px;
+  border-radius: 0 0 8px 8px;
+  background: #fff;
+  box-shadow: 0 0 14px 4px rgba(255, 255, 255, .9), 0 0 0 1px var(--steel-d);
+}
+
+.row {
+  margin-top: 8px;
+  background: linear-gradient(var(--case-hi), var(--case-lo));
+  border-radius: 6px;
+  border: 1px solid var(--steel-d);
+  overflow: hidden;
+}
+
+.row-h {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+  padding: 10px 14px 0;
+}
+
+.pop {
+  margin: 0;
+  padding: 3px 22px 4px 12px;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: .04em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%);
+}
+
+.row-h .note {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-2);
+  letter-spacing: .06em;
+}
+
+.row-h .note + .note::before { content: "／"; margin-right: 14px; color: var(--steel-d); }
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px 14px 0;
+}
+
+.slot { min-width: 0; display: flex; flex-direction: column; }
+
+/* 棚札 */
+.tag {
+  margin-inline: -6px;
+  margin-top: 8px;
+  padding: 4px 10px 5px;
+  background: #fff;
+  border-top: 4px solid var(--steel-d);
+  border-left: 1px solid var(--steel);
+  border-right: 1px solid var(--steel);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+}
+
+.tag .tn {
+  font-size: 11px;
+  font-weight: 900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.tag .tp {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tag .tp b { font-weight: 400; }
+.tag .tp s { font-family: var(--font-body); font-weight: 700; font-size: 11px; color: var(--ink-2); }
+.tag .tp .off { color: var(--red); font-size: 18px; }
+
+/* ---------- パック ---------- */
+.pack {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 120 / 96;
+  padding: 0;
+  border: 0;
+  background: none;
+  container-type: inline-size;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 3px 2px rgba(20, 35, 60, .28));
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+.pack:hover { transform: translateY(-2px); }
+.pack:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 8px; }
+
+.pack svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.pack .lid {
+  position: absolute;
+  inset: 3% 2.5%;
+  border-radius: 6cqw;
+  background: linear-gradient(115deg, rgba(255,255,255,.38) 0 20%, transparent 20% 28%, rgba(255,255,255,.2) 28% 33%, transparent 33%);
+  pointer-events: none;
+}
+
+.pack .label {
+  position: absolute;
+  left: 3cqw;
+  bottom: 3cqw;
+  width: 42cqw;
+  padding: 1.6cqw 2cqw;
+  display: grid;
+  gap: .4cqw;
+  background: #fff;
+  color: #222;
+  text-align: left;
+  font-size: max(6px, 3.5cqw);
+  line-height: 1.25;
+  border-radius: .8cqw;
+  box-shadow: 0 0 0 .3cqw rgba(0, 0, 0, .1);
+  pointer-events: none;
+}
+
+.pack .label b { font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pack .label em { font-style: normal; font-size: max(5px, 2.9cqw); color: #555; white-space: nowrap; }
+.pack .label .bar {
+  height: 4cqw;
+  background: repeating-linear-gradient(90deg, #111 0 .4cqw, #fff .4cqw .9cqw, #111 .9cqw 1.1cqw, #fff 1.1cqw 1.8cqw);
+}
+.pack .label strong { font-family: var(--font-display); font-weight: 400; font-size: 5.2cqw; text-align: right; }
+
+.pack.in { animation: restock .4s ease-out backwards; }
+.pack.taken { transform: translateY(-16px) rotate(2deg) scale(.96); opacity: 0; pointer-events: none; }
+
+@keyframes restock {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.row.deliver { animation: deliver .7s cubic-bezier(.2, 1.1, .3, 1) backwards; }
+
+@keyframes deliver {
+  from { transform: translateY(40px); opacity: 0; }
+}
+
+.ikue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 2px 12px 2px 3px;
+  min-width: 0;
+  background: #e6f3e8;
+  border-radius: 18px;
+  color: #1f5a3c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ikue-face svg { display: block; width: 28px; height: 28px; }
+.ikue b { font-weight: 900; margin-right: .3em; }
+
+.rail {
+  height: 10px;
+  background: linear-gradient(#e4ebec, var(--steel-d));
+  border-top: 1px solid #fff;
+}
+
+/* ---------- シール ---------- */
+.stk { position: absolute; inset: 0; pointer-events: none; }
+
+.sticker {
+  --u: 1cqw;
+  position: relative;
+  width: calc(var(--u) * 42);
+  height: calc(var(--u) * 26);
+  border-radius: calc(var(--u) * 5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 1;
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+.sticker small {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: calc(var(--u) * 4.6);
+  letter-spacing: .1em;
+  margin-bottom: calc(var(--u) * 1.6);
+}
+
+.sticker b { font-weight: 400; font-size: calc(var(--u) * 11); }
+
+.sticker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255,255,255,.5), transparent 32%, transparent 68%, rgba(0,0,0,.1));
+}
+
+.k20 {
+  background: var(--yellow);
+  color: var(--red);
+  box-shadow: inset 0 0 0 calc(var(--u) * .9) var(--red), 0 calc(var(--u) * .6) calc(var(--u) * 1.4) rgba(0, 0, 0, .3);
+}
+
+.k30 {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: inset 0 0 0 calc(var(--u) * .9) #fff, 0 calc(var(--u) * .6) calc(var(--u) * 1.4) rgba(0, 0, 0, .3);
+}
+
+.k50 {
+  background: var(--red);
+  color: var(--yellow);
+  box-shadow: inset 0 0 0 calc(var(--u) * .9) var(--yellow), 0 calc(var(--u) * .6) calc(var(--u) * 1.4) rgba(0, 0, 0, .3);
+}
+
+.k50 b { font-size: calc(var(--u) * 15); }
+
+.stk .sticker {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+  animation: slap .22s cubic-bezier(.2, 1.4, .4, 1) both;
+}
+
+.stk .sticker.still { animation: none; }
+
+@keyframes slap {
+  from { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1.5); opacity: .5; }
+  to { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1); opacity: 1; }
+}
+
+/* 手に持ったシール */
+.hand {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  will-change: transform;
+}
+
+.hand.show { opacity: 1; }
+.hand .sticker,
+.rhand .sticker {
+  --u: var(--hu, 2px);
+  transform: translate(-50%, -50%) rotate(-9deg) scale(1.04);
+  transition: transform .12s ease;
+  filter: drop-shadow(0 6px 5px rgba(0, 0, 0, .25));
+}
+.hand.press .sticker { transform: translate(-50%, -50%) rotate(-3deg) scale(.86); }
+
+/* たなかの手 */
+.rhand {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 49;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+.rhand.show { opacity: 1; }
+.rhand.go { transition: transform .38s cubic-bezier(.3, .7, .3, 1), opacity .15s; }
+.rhand .sticker { transform: translate(-50%, -50%) rotate(8deg); }
+
+/* たなかが貼ったシール／商品の目印 */
+.sticker.theirs::before {
+  content: "た";
+  position: absolute;
+  top: calc(var(--u) * 1.6);
+  right: calc(var(--u) * 1.6);
+  width: calc(var(--u) * 6);
+  height: calc(var(--u) * 6);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: calc(var(--u) * 4);
+  line-height: 1;
+  z-index: 1;
+}
+
+.pack.theirs::before {
+  content: "たなか";
+  position: absolute;
+  left: 2cqw;
+  top: 2cqw;
+  z-index: 2;
+  padding: .6cqw 2cqw .8cqw;
+  border-radius: 1cqw;
+  background: var(--blue);
+  color: #fff;
+  font-size: max(6px, 4cqw);
+  font-weight: 900;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+/* ---------- たなかとの勝負 ---------- */
+.versus {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  background: #fff;
+  border: 2px solid var(--blue);
+  border-radius: 8px;
+  box-shadow: 0 3px 0 var(--blue);
+}
+
+.versus.enter { animation: vs-in .5s cubic-bezier(.2, 1.3, .4, 1) backwards; }
+
+@keyframes vs-in {
+  from { transform: translateY(-14px) scale(.96); opacity: 0; }
+}
+
+.versus .face svg { display: block; width: 72px; height: 72px; }
+
+.vs-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.vs-head span { color: var(--ink-2); font-weight: 700; }
+
+.vs-bar {
+  display: flex;
+  height: 16px;
+  margin-block: 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--steel);
+}
+
+.vs-bar i { display: block; height: 100%; transition: flex-basis .4s ease; }
+.vs-bar .me { background: var(--red); }
+.vs-bar .tan { background: var(--blue); }
+
+.vs-nums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.vs-nums b { font-family: var(--font-display); font-weight: 400; font-size: 18px; }
+.vs-nums .me b { color: var(--red); }
+.vs-nums .tan b { color: var(--blue); }
+.vs-nums em { font-style: normal; color: var(--ink-2); font-size: 12px; }
+
+.bubble {
+  margin: 8px 0 0;
+  padding: 5px 10px;
+  background: #eef3fc;
+  border-radius: 6px;
+  color: var(--blue-d);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bubble b { font-weight: 900; margin-right: .4em; }
+
+/* ---------- やまだ（シールはがし） ---------- */
+.versus.yamada { border-color: var(--brown); box-shadow: 0 3px 0 var(--brown); }
+.yamada .vs-bar .peel { background: var(--brown); }
+.yamada .vs-nums .ya b { color: var(--brown); }
+.yamada .bubble { background: #f7efe4; color: var(--brown-d); }
+
+.yhand {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 51;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+.yhand.show { opacity: 1; }
+.yhand.go { transition: transform .42s cubic-bezier(.3, .7, .3, 1), opacity .2s; }
+.yhand svg {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: -13px 0 0 -29px;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .3));
+}
+
+/* ---------- 覚醒 ---------- */
+.cast {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.cast .versus { margin-top: 0; }
+
+/* ---------- キャラ紹介（折りたたみ） ---------- */
+.cast-box { margin-top: 12px; }
+
+.cast-box > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 0 3px 0 var(--ink);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+.cast-box > summary > span { white-space: nowrap; }
+.cast-box > summary::-webkit-details-marker { display: none; }
+.cast-box > summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.cb-faces { display: flex; padding-left: 6px; --rc: #1fbf8a; --rb: #f4f6f7; color: var(--rc); }
+.cb-faces svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.cb-new {
+  display: none;
+  padding: 1px 8px 2px;
+  border-radius: 10px;
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+.cast-box.has-new .cb-new { display: inline-block; }
+
+.cb-toggle { margin-left: auto; color: var(--ink-2); font-size: 12px; }
+.cb-toggle::after { content: " ▼"; }
+.cast-box[open] .cb-toggle::after { content: " ▲"; }
+.cb-toggle .t-close { display: none; }
+.cast-box[open] .cb-toggle .t-open { display: none; }
+.cast-box[open] .cb-toggle .t-close { display: inline; }
+
+.versus.awake {
+  --aura: var(--blue);
+  animation: aura 1.2s ease-in-out infinite alternate;
+}
+.versus.yamada.awake { --aura: var(--brown); }
+
+@keyframes aura {
+  from { box-shadow: 0 3px 0 var(--aura), 0 0 0 0 transparent; }
+  to { box-shadow: 0 3px 0 var(--aura), 0 0 18px 4px var(--aura); }
+}
+
+.versus.awake .face svg { filter: drop-shadow(0 0 5px var(--aura)); }
+
+.vs-head .awake-badge {
+  display: inline-block;
+  margin-right: .6em;
+  padding: 1px 8px 2px;
+  background: var(--aura);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: .1em;
+  border-radius: 3px;
+  transform: skewX(-8deg);
+}
+
+/* ---------- 店長おださんとシール貼り銃 ---------- */
+.versus.oda { border-color: var(--green); box-shadow: 0 3px 0 var(--green); }
+.oda .bubble { background: #e6f3ea; color: var(--green-d); }
+.oda .vs-head span { color: var(--green-d); }
+.oda .hint { margin: 6px 0 0; font-weight: 700; font-size: 13px; }
+
+/* ---------- アメリカ人店員ジョン ---------- */
+.versus.john { border-color: var(--usblue); box-shadow: 0 3px 0 var(--usblue); }
+.john .bubble { background: #e9eefb; color: var(--usblue); }
+.john .vs-head span { color: var(--usblue); }
+.john .hint { margin: 6px 0 0; font-weight: 700; font-size: 13px; }
+
+.usa .pop { background: var(--usblue); }
+.usa .row { background: linear-gradient(var(--case-hi), #dfe6f4); }
+.usa .brand .eyebrow { color: var(--usblue); }
+
+/* ---------- お掃除ロボット シリボ ---------- */
+.versus.robo-panel { border-color: var(--teal); box-shadow: 0 3px 0 var(--teal); }
+.robo-panel .face { --rc: #1fbf8a; --rb: #f4f6f7; color: var(--rc); }
+.robo-panel .bubble { background: #e3f4f2; color: var(--teal-d); }
+.robo-panel .vs-head span { color: var(--teal-d); }
+.robo-panel .hint { margin: 6px 0 0; font-weight: 700; font-size: 13px; }
+
+.robots {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.robo {
+  --rc: #1fbf8a;
+  --rb: #f4f6f7;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  filter: drop-shadow(0 5px 4px rgba(20, 35, 60, .35));
+  will-change: transform;
+  animation: robo-in .6s ease-out backwards;
+}
+.robo.b { --rc: #ee5f9c; --rb: #fbf1f5; }
+.robo svg { display: block; width: 100%; height: 100%; color: var(--rc); }
+.robo .brush { transform-box: fill-box; transform-origin: center; animation: brush .6s linear infinite; }
+.robo.busy svg { animation: wobble .16s linear infinite; }
+
+@keyframes robo-in { from { opacity: 0; } }
+@keyframes brush { to { transform: rotate(360deg); } }
+@keyframes wobble {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
+.stk .sticker.peeling.swept { animation: swept .38s ease-in forwards; }
+
+@keyframes swept {
+  to { transform: translate(-50%, -50%) rotate(calc(var(--rot) + 200deg)) scale(0); opacity: 0; }
+}
+
+/* ---------- 閉店リザルト（レシート） ---------- */
+#result {
+  width: 100%;
+  max-width: min(92vw, 380px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #222;
+  overflow: visible;
+}
+
+#result::backdrop { background: rgba(20, 35, 60, .62); }
+
+.receipt {
+  padding: 22px 22px 22px;
+  background: #fffef6;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .38);
+  font-family: var(--font-led);
+  font-size: 14px;
+  line-height: 1.5;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.receipt p { margin: 0; text-align: center; }
+.receipt .r-store { font-size: 12px; letter-spacing: .2em; color: #555; }
+.receipt h2 { margin: 2px 0 0; text-align: center; font-family: var(--font-display); font-weight: 400; font-size: 28px; letter-spacing: .06em; }
+.receipt .r-date { font-size: 12px; color: #555; }
+.receipt hr { border: 0; border-top: 2px dashed #b9b6a8; margin: 12px 0; }
+
+.r-list { margin: 0; display: grid; gap: 4px; }
+.r-list > div { display: flex; align-items: baseline; gap: 8px; }
+.r-list dt { flex: none; }
+.r-list .lead { flex: 1; min-width: 12px; border-bottom: 2px dotted #b9b6a8; transform: translateY(-4px); }
+.r-list dd { margin: 0; flex: none; font-variant-numeric: tabular-nums; }
+
+.receipt .r-met { font-size: 13px; color: #444; }
+.receipt .r-rank { margin-top: 4px; font-size: 12px; color: #555; }
+.receipt .r-rank b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--red); letter-spacing: .04em; }
+.receipt .r-thanks { margin-top: 10px; font-size: 12px; letter-spacing: .12em; color: #555; }
+
+.r-actions { margin-top: 16px; display: grid; gap: 8px; }
+.r-actions button {
+  font: 900 14px var(--font-body);
+  letter-spacing: .04em;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 2px solid var(--red);
+  cursor: pointer;
+}
+.r-actions .primary { background: var(--red); color: #fff; }
+.r-actions .ghost { background: #fff; color: var(--red); }
+.r-actions button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+.case { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+
+.hand .aim {
+  position: absolute;
+  left: -13px;
+  top: -13px;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff, inset 0 0 0 2px #fff;
+}
+.hand .aim::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.hand .gun {
+  position: absolute;
+  left: 8px;
+  top: -4px;
+  width: 96px;
+  height: auto;
+  transform: scaleX(-1);
+  filter: drop-shadow(0 6px 5px rgba(0, 0, 0, .28));
+}
+.hand.fire .gun { animation: recoil .11s ease-out; }
+
+@keyframes recoil {
+  from { transform: scaleX(-1) translateX(-9px) rotate(-6deg); }
+  to { transform: scaleX(-1); }
+}
+
+.stk .sticker.peeling { animation: peel-off .46s ease-in forwards; }
+
+@keyframes peel-off {
+  from { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1); opacity: 1; }
+  to { transform: translate(-38%, -100%) rotate(calc(var(--rot) + 24deg)) scale(1.18); opacity: 0; }
+}
+
+/* ---------- 足元 ---------- */
+.floor {
+  margin-top: 22px;
+  height: 26px;
+  border-radius: 4px;
+  background: repeating-conic-gradient(#dbe4df 0 25%, #eef2ef 0 50%) 0 0 / 48px 48px;
+}
+
+.foot {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-2);
+  letter-spacing: .06em;
+}
+
+/* ---------- 狭い画面 ---------- */
+@media (max-width: 760px) {
+  .masthead { grid-template-columns: 1fr; }
+  .led { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .slots { grid-template-columns: repeat(3, 1fr); gap: 8px; padding-inline: 10px; }
+  .slot:nth-child(4) { display: none; }
+  .tag { margin-inline: -4px; padding-inline: 6px; gap: 4px; }
+  .tag .tp { font-size: 13px; gap: 4px; }
+  .tag .tp .off { font-size: 15px; }
+  .tag .tp s { display: none; }
+  .pack .label em { display: none; }
+  .row-h { padding-inline: 10px; }
+  .row-h .note:last-child { display: none; }
+  .ikue { margin-left: 0; width: 100%; }
+  .announce { flex-wrap: wrap; }
+  .versus { grid-template-columns: 52px 1fr; gap: 10px; padding-inline: 10px; }
+  .versus .face svg { width: 52px; height: 52px; }
+  .cast-box > summary { gap: 8px; padding-inline: 10px; }
+  .cb-faces svg { width: 26px; height: 26px; }
+  #cbCount, .cb-toggle span { display: none !important; }
+  .robo { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .case.hand-on .pack { cursor: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stk .sticker, .pack.in, .versus.enter, .row.deliver { animation: none; }
+  .stk .sticker.peeling { animation: none; opacity: 0; }
+  .versus.awake { animation: none; box-shadow: 0 3px 0 var(--aura), 0 0 12px 2px var(--aura); }
+  .stk .sticker.peeling.swept { animation: none; opacity: 0; }
+  .robo, .robo .brush, .robo.busy svg { animation: none; }
+  .hand.fire .gun { animation: none; }
+  .pack, .hand .sticker, .rhand.go, .yhand.go, .vs-bar i { transition: none; }
+}
+</style>
+</head>
+<body>
+<noscript>このゲームを遊ぶには、JavaScriptを有効にしてください。（値引きシール係：スーパーの夜、惣菜に割引シールを貼り続ける無料ブラウザゲーム）</noscript>
+
+<main class="store">
+  <div class="awning" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <div class="brand">
+      <p class="eyebrow" id="eyebrow">スーパー ゆうやけ　惣菜コーナー</p>
+      <h1>値引き<span>シール</span>係</h1>
+      <p class="howto">商品をタップして、値引きシールをペタッと貼る。ゴールはありません。気のすむまでどうぞ。</p>
+    </div>
+    <dl class="led" aria-label="店内の状況">
+      <div><dt>時刻</dt><dd id="clock">19:00</dd></div>
+      <div><dt>貼った枚数</dt><dd id="count">00000</dd></div>
+      <div><dt>営業日</dt><dd id="day">1日目</dd></div>
+      <div><dt>いまのシール</dt><dd id="preview"></dd></div>
+    </dl>
+  </header>
+
+  <div class="announce">
+    <span class="badge">店内放送</span>
+    <p id="say" aria-live="polite"></p>
+    <button id="mute" type="button" aria-pressed="true">音 ON</button>
+    <button id="closeShop" type="button">閉店</button>
+  </div>
+
+  <details class="cast-box" id="castBox" hidden>
+    <summary>
+      <span>キャラ紹介</span>
+      <span class="cb-faces" id="cbFaces"></span>
+      <span id="cbCount"></span>
+      <span class="cb-new">NEW</span>
+      <span class="cb-toggle"><span class="t-open">ひらく</span><span class="t-close">とじる</span></span>
+    </summary>
+  <div class="cast">
+  <section class="versus" id="versus" aria-label="たなかとの売上勝負" hidden>
+    <div class="face">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#dbe6f7"/>
+        <path d="M6 62c2-13 13-17 26-17s24 4 26 17z" fill="#2358b8"/>
+        <rect x="27" y="38" width="10" height="9" fill="#e6b891"/>
+        <rect x="21" y="47" width="22" height="9" rx="1.5" fill="#fff"/>
+        <text x="32" y="54" text-anchor="middle" font-size="6.5" font-weight="900" fill="#14233c" font-family="'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif">たなか</text>
+        <ellipse cx="32" cy="29" rx="12" ry="13.5" fill="#f2c9a5"/>
+        <path d="M19 26c0-11 7-16 13-16s13 5 13 16c-4-3-8-4-13-4s-9 1-13 4z" fill="#14233c"/>
+        <path d="M17 26h30c1 0 1 3-1 3H18c-2 0-2-3-1-3z" fill="#0f1c33"/>
+        <circle cx="27" cy="32" r="1.4" fill="#14233c"/><circle cx="37" cy="32" r="1.4" fill="#14233c"/>
+        <path d="M24.5 29l5 1.3M39.5 29l-5 1.3" stroke="#14233c" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M28 38c2.5 1.8 5.5 1.8 8-.5" stroke="#14233c" fill="none" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="vs-main">
+      <div class="vs-head"><b>本日の売上勝負　最後にシールを貼った人の売上</b><span id="record">通算 0勝 0敗</span></div>
+      <div class="vs-bar" aria-hidden="true"><i class="me" id="barMe"></i><i class="tan" id="barTan"></i></div>
+      <div class="vs-nums">
+        <span class="me">あなた <b id="meScore">0</b>点　<em>貼った <span id="meSt">0</span>枚</em></span>
+        <span class="tan">たなか <b id="tanScore">0</b>点　<em>貼った <span id="tanSt">0</span>枚</em></span>
+      </div>
+      <p class="bubble" id="bubble" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="versus yamada" id="yamada" aria-label="やまだとのはがし勝負" hidden>
+    <div class="face">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#efe3d0"/>
+        <path d="M6 62c2-13 13-17 26-17s24 4 26 17z" fill="#8a5a2b"/>
+        <path d="M25 45l7 11 7-11z" fill="#f3ead8"/>
+        <rect x="27" y="38" width="10" height="9" fill="#d9ab82"/>
+        <rect x="21" y="49" width="22" height="9" rx="1.5" fill="#fff"/>
+        <text x="32" y="56" text-anchor="middle" font-size="6.5" font-weight="900" fill="#14233c" font-family="'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif">やまだ</text>
+        <ellipse cx="32" cy="29" rx="12" ry="13.5" fill="#e8bd94"/>
+        <circle cx="19.5" cy="28" r="4.5" fill="#f4f4f2"/><circle cx="44.5" cy="28" r="4.5" fill="#f4f4f2"/>
+        <path d="M23 19c3-4 15-4 18 0" stroke="#f4f4f2" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M23.5 25.5l6-1.5M40.5 25.5l-6-1.5" stroke="#9a9a9a" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="27" cy="30" r="4" fill="none" stroke="#3a2a1a" stroke-width="1.1"/><circle cx="37" cy="30" r="4" fill="none" stroke="#3a2a1a" stroke-width="1.1"/>
+        <path d="M31 30h2" stroke="#3a2a1a" stroke-width="1.1"/>
+        <circle cx="27" cy="30" r="1" fill="#3a2a1a"/><circle cx="37" cy="30" r="1" fill="#3a2a1a"/>
+        <path d="M25.5 36.5c3-2 5-1 6.5 0c1.5-1 3.500-2 6.500 0c-2 3.500-4 2.500-6.500 1c-2 1.500-4 2.500-6.500-1z" fill="#f4f4f2" stroke="#b8b8b8" stroke-width=".6"/>
+      </svg>
+    </div>
+    <div class="vs-main">
+      <div class="vs-head"><b>本日のはがし勝負　あなたの貼った枚数 対 やまだのはがした枚数</b><span id="yaRecord">通算 0勝 0敗</span></div>
+      <div class="vs-bar" aria-hidden="true"><i class="me" id="barYaMe"></i><i class="peel" id="barYaPeel"></i></div>
+      <div class="vs-nums">
+        <span class="me">あなた 貼った <b id="yaMe">0</b>枚</span>
+        <span class="ya">やまだ はがした <b id="yaPeel">0</b>枚　<em>売り逃し <span id="yaMiss">0</span>点</em></span>
+      </div>
+      <p class="bubble" id="yaBubble" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="versus oda" id="oda" aria-label="店長おださんからの支給品" hidden>
+    <div class="face">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#dcefe3"/>
+        <path d="M6 62c2-13 13-17 26-17s24 4 26 17z" fill="#1f7a4d"/>
+        <rect x="27" y="38" width="10" height="9" fill="#e6b891"/>
+        <path d="M24 45l8 12 8-12z" fill="#fff"/>
+        <path d="M30 46h4l1.500 10-3.500 3-3.500-3z" fill="#d7191f"/>
+        <rect x="11" y="52" width="15" height="8" rx="1.500" fill="#fff"/>
+        <text x="18.500" y="58" text-anchor="middle" font-size="5.500" font-weight="900" fill="#14233c" font-family="'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif">店長</text>
+        <ellipse cx="32" cy="29" rx="12" ry="13.500" fill="#f2c9a5"/>
+        <path d="M19.500 27c-1-10 5-16 12.500-16s13.500 6 12.500 16c-2-5-5-8-12.500-8S21.500 22 19.500 27z" fill="#2a2320"/>
+        <circle cx="27" cy="31" r="1.400" fill="#14233c"/><circle cx="37" cy="31" r="1.400" fill="#14233c"/>
+        <path d="M24.500 27.500l5-1M39.500 27.500l-5-1" stroke="#14233c" stroke-width="1.400" stroke-linecap="round" fill="none"/>
+        <path d="M27 36.500c3 3 7 3 10 0" stroke="#14233c" fill="none" stroke-width="1.400" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="vs-main">
+      <div class="vs-head"><b>店長からの支給品　シール貼り銃</b><span>発射 <span id="odaShots">0</span>発</span></div>
+      <p class="hint">商品を押しっぱなしにすると、シールを連射できます。</p>
+      <p class="bubble" id="odaBubble" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="versus john" id="john" aria-label="アメリカ人店員ジョン" hidden>
+    <div class="face">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#dfe6f6"/>
+        <path d="M6 62c2-13 13-17 26-17s24 4 26 17z" fill="#1d3f91"/>
+        <path d="M8 58h48" stroke="#d7191f" stroke-width="2"/>
+        <rect x="27" y="38" width="10" height="9" fill="#e6b891"/>
+        <rect x="21" y="49" width="22" height="9" rx="1.500" fill="#fff"/>
+        <text x="32" y="56" text-anchor="middle" font-size="6" font-weight="900" fill="#14233c" font-family="'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif">ジョン</text>
+        <ellipse cx="32" cy="29" rx="12" ry="13.500" fill="#f5cfae"/>
+        <path d="M19.500 27c-1-9 5-13 12.500-13s13.500 4 12.500 13c-3-4-7-6-12.500-6s-9.500 2-12.500 6z" fill="#e6b84a"/>
+        <path d="M18.500 22c1-9 7-13 13.500-13s12.500 4 13.500 13z" fill="#d7191f"/>
+        <path d="M14 22h36c1 0 1 3-1 3H15c-2 0-2-3-1-3z" fill="#a80f16"/>
+        <path d="M32 12l1.500 3.200 3.500.4-2.600 2.400.7 3.400L32 19.600l-3.100 1.800.7-3.400-2.600-2.400 3.500-.4z" fill="#fff"/>
+        <circle cx="27" cy="31" r="1.400" fill="#14233c"/><circle cx="37" cy="31" r="1.400" fill="#14233c"/>
+        <path d="M24.500 28l5-1M39.500 28l-5-1" stroke="#a9832a" stroke-width="1.400" stroke-linecap="round" fill="none"/>
+        <path d="M25 35c3 5.500 11 5.500 14 0z" fill="#fff" stroke="#14233c" stroke-width="1.200" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="vs-main">
+      <div class="vs-head"><b>アメリカ人店員　ジョン</b><span>全商品アメリカ産</span></div>
+      <p class="hint">売り場の商品が、すべてアメリカの商品に入れ替わりました。</p>
+      <p class="bubble" id="johnBubble" aria-live="polite"></p>
+    </div>
+  </section>
+  <section class="versus robo-panel" id="roboPanel" aria-label="お掃除ロボットのシリボ" hidden>
+    <div class="face" id="roboFace"></div>
+    <div class="vs-main">
+      <div class="vs-head"><b>お掃除ロボット　シリボ</b><span><span id="roboCount">4</span>台 稼働中</span></div>
+      <p class="hint">売り場を動き回って、貼ってあるシールを掃除します。30枚貼るごとに1台増えます(最大15台)。勝負ではありません。</p>
+      <p class="bubble" id="roboBubble" aria-live="polite"></p>
+    </div>
+  </section>
+  </div>
+  </details>
+
+  <div class="case-wrap">
+    <section class="case" id="case" aria-label="惣菜ショーケース"></section>
+    <div class="robots" id="robots" aria-hidden="true"></div>
+  </div>
+
+  <div class="floor" aria-hidden="true"></div>
+  <p class="foot">価格はすべて税込です。ご利用ありがとうございます。</p>
+</main>
+
+<dialog id="result" aria-labelledby="resTitle">
+  <div class="receipt">
+    <p class="r-store">スーパー ゆうやけ</p>
+    <h2 id="resTitle">閉店リザルト</h2>
+    <p class="r-date" id="resDate"></p>
+    <hr>
+    <dl class="r-list" id="resList"></dl>
+    <hr>
+    <p class="r-met" id="resMet"></p>
+    <p class="r-rank">今夜の称号<b id="resRank"></b></p>
+    <p class="r-thanks">ご利用ありがとうございました</p>
+    <div class="r-actions">
+      <button id="resReset" class="primary" type="button">記録をリセットして最初から</button>
+      <button id="resClose" class="ghost" type="button">営業を続ける</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="hand" id="hand" aria-hidden="true"></div>
+<div class="rhand" id="rhand" aria-hidden="true"></div>
+<div class="yhand" id="yhand" aria-hidden="true">
+  <svg viewBox="0 0 48 48">
+    <g transform="rotate(-30 24 24)">
+      <rect x="4" y="12" width="30" height="10" rx="5" fill="#dcae84"/>
+      <ellipse cx="30" cy="17" rx="4" ry="3.2" fill="#f5dfc9"/>
+      <rect x="8" y="24" width="26" height="9" rx="4.5" fill="#cf9f74"/>
+      <ellipse cx="30" cy="28.5" rx="3.6" ry="2.8" fill="#f0d5bb"/>
+    </g>
+    <circle cx="10" cy="38" r="6" fill="#8a5a2b"/>
+    <text x="10" y="41" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif">や</text>
+  </svg>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 商品の絵 ---------- */
+  var dots = function (list, r, fill) {
+    return '<g fill="' + fill + '">' + list.map(function (p) {
+      return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + r + '"/>';
+    }).join("") + '</g>';
+  };
+
+  var nigiri = function (x, y, c, c2) {
+    return '<rect x="' + x + '" y="' + (y + 6) + '" width="22" height="11" rx="5" fill="#fbfaf4"/>' +
+      '<rect x="' + (x - 1) + '" y="' + y + '" width="24" height="10" rx="5" fill="' + c + '"/>' +
+      '<path d="M' + (x + 4) + ' ' + (y + 3.5) + 'h15" stroke="' + c2 + '" stroke-width="1.3" stroke-linecap="round" opacity=".75"/>';
+  };
+
+  var chunk = function (cx, cy, r, a, b, rot) {
+    return '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + r + '" ry="' + (r * 0.85) + '" transform="rotate(' + rot + ' ' + cx + ' ' + cy + ')" fill="' + a + '"/>' +
+      '<circle cx="' + (cx - r * 0.3) + '" cy="' + (cy - r * 0.35) + '" r="' + (r * 0.32) + '" fill="' + b + '"/>' +
+      '<circle cx="' + (cx + r * 0.35) + '" cy="' + (cy + r * 0.25) + '" r="' + (r * 0.14) + '" fill="#8a5a1c"/>';
+  };
+
+  var korokke = function (cx, cy, rot) {
+    return '<ellipse cx="' + cx + '" cy="' + cy + '" rx="21" ry="13" transform="rotate(' + rot + ' ' + cx + ' ' + cy + ')" fill="#cf9037"/>' +
+      '<ellipse cx="' + (cx - 5) + '" cy="' + (cy - 4) + '" rx="10" ry="4" transform="rotate(' + rot + ' ' + cx + ' ' + cy + ')" fill="#e3b05c"/>' +
+      dots([[cx + 6, cy + 3], [cx - 8, cy + 5], [cx + 12, cy - 2], [cx + 1, cy + 7]], 1, "#a86d20");
+  };
+
+  var sandwich = function (x, y, rot) {
+    return '<g transform="translate(' + x + ' ' + y + ') rotate(' + rot + ')">' +
+      '<rect x="0" y="0" width="46" height="12" rx="5" fill="#f3dfae" stroke="#d2a45a" stroke-width="1.2"/>' +
+      '<rect x="-2" y="11" width="50" height="6" rx="3" fill="#6fbf5b"/>' +
+      '<rect x="0" y="16" width="46" height="7" rx="2" fill="#f2a1a1"/>' +
+      '<rect x="0" y="22" width="46" height="7" rx="2" fill="#f7d23a"/>' +
+      '<rect x="0" y="29" width="46" height="12" rx="5" fill="#f3dfae" stroke="#d2a45a" stroke-width="1.2"/></g>';
+  };
+
+  var onigiri = function (x, y) {
+    return '<g transform="translate(' + x + ' ' + y + ') scale(.74)">' +
+      '<path d="M0 -28 Q5 -30 9 -23 L31 19 Q35 28 26 29 L-26 29 Q-35 28 -31 19 L-9 -23 Q-5 -30 0 -28Z" fill="#fbfaf5" stroke="#d9dbd2" stroke-width="1.5"/>' +
+      '<path d="M-17 9 H17 L23 20 Q26 27 21 29 H-21 Q-26 27 -23 20Z" fill="#1f3a2a"/>' +
+      '<circle cx="0" cy="-6" r="2.2" fill="#f28a55"/><circle cx="-4" cy="-12" r="1.4" fill="#f28a55"/></g>';
+  };
+
+  var trayBase = function (fill, inner) {
+    return '<rect x="3" y="5" width="114" height="84" rx="9" fill="' + fill + '"/>' +
+      '<rect x="7" y="9" width="106" height="76" rx="6" fill="' + inner + '"/>';
+  };
+
+  var scatter = function (cx, cy, color) {
+    return dots([[-8, -2], [4, -6], [9, 2], [-2, 6], [-10, 5], [6, 8], [0, -1], [-5, -8]].map(function (p) {
+      return [cx + p[0], cy + p[1]];
+    }), 1, color);
+  };
+
+  var ohagiBall = function (cx, cy, fill, hi, extra) {
+    return '<ellipse cx="' + cx + '" cy="' + (cy + 4) + '" rx="20" ry="15" fill="#fff" stroke="#e2dcc8" stroke-width="1"/>' +
+      '<ellipse cx="' + cx + '" cy="' + cy + '" rx="17" ry="14" fill="' + fill + '"/>' +
+      '<ellipse cx="' + (cx - 5) + '" cy="' + (cy - 5) + '" rx="6" ry="3" fill="' + hi + '" opacity=".7"/>' + (extra || "");
+  };
+
+  var dangoBall = function (cx, cy, fill, hi) {
+    return '<circle cx="' + cx + '" cy="' + cy + '" r="9" fill="' + fill + '"/>' +
+      '<ellipse cx="' + (cx - 3) + '" cy="' + (cy - 3.5) + '" rx="3.2" ry="1.8" fill="' + hi + '" opacity=".8"/>';
+  };
+
+  var dangoSkewer = function (y) {
+    return '<rect x="14" y="' + (y - 1.3) + '" width="98" height="2.6" rx="1.3" fill="#d8b878"/>' +
+      dangoBall(58, y, "#f4a6b8", "#fbd0da") + dangoBall(76, y, "#fbf8ef", "#ffffff") + dangoBall(94, y, "#9fca6b", "#c8e39c");
+  };
+
+  var daifuku = function (cx, cy, fill, extra) {
+    return '<ellipse cx="' + cx + '" cy="' + (cy + 9) + '" rx="21" ry="5" fill="#000" opacity=".08"/>' +
+      '<path d="M' + (cx - 19) + ' ' + (cy + 8) + 'C' + (cx - 19) + ' ' + (cy - 16) + ' ' + (cx + 19) + ' ' + (cy - 16) + ' ' + (cx + 19) + ' ' + (cy + 8) + 'Q' + cx + ' ' + (cy + 13) + ' ' + (cx - 19) + ' ' + (cy + 8) + 'Z" fill="' + fill + '" stroke="#e8dfd0" stroke-width=".8"/>' +
+      extra +
+      '<path d="M' + (cx - 13) + ' ' + (cy - 3) + 'q6-7 14-7" stroke="#fff" stroke-width="2" fill="none" opacity=".85" stroke-linecap="round"/>';
+  };
+
+  var gingham = function (id) {
+    return '<pattern id="' + id + '" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#fff"/>' +
+      '<rect width="6" height="12" fill="#e2434b" opacity=".55"/><rect width="12" height="6" fill="#e2434b" opacity=".55"/></pattern>';
+  };
+
+  var drum = function (x, y, rot) {
+    return '<g transform="translate(' + x + ' ' + y + ') rotate(' + rot + ')">' +
+      '<ellipse cx="0" cy="0" rx="18" ry="11" fill="#b8722a"/><ellipse cx="-5" cy="-4" rx="8" ry="3" fill="#d69a52"/>' +
+      '<rect x="14" y="-2.500" width="16" height="5" rx="2.500" fill="#f5efe2"/>' +
+      '<circle cx="30" cy="-3.500" r="3.500" fill="#f5efe2"/><circle cx="30" cy="3.500" r="3.500" fill="#f5efe2"/></g>';
+  };
+
+  var fries = function () {
+    var out = "";
+    for (var i = 0; i < 10; i++) {
+      out += '<rect x="' + (50 + i * 6) + '" y="' + (20 + (i * 7) % 11) + '" width="4.400" height="40" rx="1" fill="#f2c94c" stroke="#d9a930" stroke-width=".5"/>';
+    }
+    return out;
+  };
+
+  var clubStack = function (x, y, rot) {
+    var layers = [[8, "#f3dfae", "#d2a45a"], [5, "#6cb84a"], [5, "#e03b32"], [5, "#a4472f"], [8, "#f3dfae", "#d2a45a"], [5, "#f2a1a1"], [4, "#f7d23a"], [8, "#f3dfae", "#d2a45a"]];
+    var yy = 0, out = '<g transform="translate(' + x + ' ' + y + ') rotate(' + rot + ')">';
+    layers.forEach(function (l) {
+      out += '<rect x="0" y="' + yy + '" width="38" height="' + l[0] + '" rx="2.500" fill="' + l[1] + '"' + (l[2] ? ' stroke="' + l[2] + '" stroke-width="1"' : "") + '/>';
+      yy += l[0] - 0.5;
+    });
+    return out + '<line x1="19" y1="-14" x2="19" y2="' + yy + '" stroke="#d8b878" stroke-width="1.600"/><circle cx="19" cy="-14" r="3" fill="#d7191f"/></g>';
+  };
+
+  var donut = function (cx, cy, icing, spr) {
+    return '<circle cx="' + cx + '" cy="' + cy + '" r="16" fill="#d9a05a"/><circle cx="' + cx + '" cy="' + cy + '" r="14" fill="' + icing + '"/>' +
+      dots([[cx - 9, cy - 3], [cx + 8, cy - 6], [cx - 3, cy + 9], [cx + 9, cy + 5], [cx - 6, cy - 9], [cx + 2, cy - 10]], 1.1, spr) +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="5" fill="#fbf6ee"/>';
+  };
+
+  var cookie = function (cx, cy) {
+    return '<circle cx="' + cx + '" cy="' + cy + '" r="16" fill="#d2955a" stroke="#b3763c" stroke-width="1.200"/>' +
+      '<ellipse cx="' + (cx - 5) + '" cy="' + (cy - 6) + '" rx="6" ry="2.500" fill="#e6b784" opacity=".8"/>' +
+      dots([[cx - 7, cy + 2], [cx + 4, cy - 5], [cx + 8, cy + 5], [cx - 1, cy + 8], [cx + 1, cy + 1], [cx - 9, cy - 4]], 2.200, "#4a2c1a");
+  };
+
+  var lattice = function () {
+    var out = "";
+    for (var x = -30; x <= 70; x += 12) {
+      out += '<path d="M' + x + ' 10L' + (x + 80) + ' 90"/><path d="M' + x + ' 90L' + (x + 80) + ' 10"/>';
+    }
+    return out;
+  };
+
+  var ART = {
+    bento:
+      trayBase("#232328", "#34343b") +
+      '<rect x="11" y="13" width="52" height="68" rx="5" fill="#f7f4ea"/>' +
+      '<circle cx="37" cy="40" r="6.5" fill="#c62f39"/><circle cx="35.5" cy="38.5" r="2" fill="#e5636b"/>' +
+      dots([[20, 22], [28, 18], [44, 22], [54, 30], [20, 34], [52, 52], [24, 56], [40, 62]], 0.9, "#3a3a3a") +
+      chunk(76, 27, 10, "#c78733", "#dea856", 10) + chunk(97, 31, 9, "#b9772a", "#d19a48", -20) +
+      '<rect x="67" y="43" width="42" height="14" rx="3" fill="#f4c73a"/><path d="M67 50h42" stroke="#e0a91c" stroke-width="1.2"/>' +
+      '<rect x="67" y="60" width="20" height="10" rx="3" fill="#f1a3a8"/><rect x="87" y="60" width="22" height="10" rx="3" fill="#f8f8f4"/>' +
+      '<circle cx="76" cy="77" r="4" fill="#4c9a4c"/><circle cx="86" cy="77" r="4" fill="#5daa52"/><rect x="95" y="73" width="14" height="7" rx="3" fill="#8ab04a"/>',
+
+    sushi:
+      trayBase("#1d1a19", "#2a2523") +
+      nigiri(10, 14, "#f28a55", "#fbc7a5") + nigiri(34, 14, "#b3222f", "#e0606a") + nigiri(58, 14, "#f7a89a", "#fde0d8") + nigiri(82, 14, "#f6cf45", "#fbe9a0") +
+      nigiri(10, 38, "#f6cf45", "#fbe9a0") + nigiri(34, 38, "#b3222f", "#e0606a") + nigiri(58, 38, "#f28a55", "#fbc7a5") + nigiri(82, 38, "#f5efe0", "#ffffff") +
+      '<rect x="9" y="62" width="102" height="5" rx="2" fill="#3f8f4a"/>' +
+      '<ellipse cx="60" cy="76" rx="10" ry="5" fill="#f4b6c0"/><circle cx="80" cy="76" r="4" fill="#7fbf4a"/>' +
+      '<path d="M92 76q6-6 12 0q-6 6-12 0z" fill="#b8452e"/><circle cx="100" cy="74" r="2" fill="#e8ddd0"/>',
+
+    karaage:
+      '<rect x="3" y="5" width="114" height="84" rx="10" fill="#efe7d3"/><rect x="6" y="8" width="108" height="78" rx="8" fill="#f8f2e2"/>' +
+      '<path d="M12 22c4-11 20-13 27-5 6-7 18-5 21 6-7 9-21 11-31 7-8 4-19 0-17-8z" fill="#8cc75c"/>' +
+      chunk(44, 44, 13, "#c58530", "#dea856", -15) + chunk(70, 36, 12, "#b9772a", "#d19a48", 20) + chunk(90, 54, 13, "#c98a3a", "#e2b05e", 5) +
+      chunk(62, 64, 12, "#b3702a", "#cf9440", -30) + chunk(84, 22, 9, "#c98a3a", "#e2b05e", 40) +
+      '<g transform="translate(100 74)"><circle r="9" fill="#f6dc3d"/><circle r="6.5" fill="#fbef8a"/><path d="M0-6.5V6.5M-6.5 0H6.5M-4.6-4.6l9.2 9.2M4.6-4.6l-9.2 9.2" stroke="#f0cc2a" stroke-width=".9"/></g>',
+
+    korokke:
+      trayBase("#e3e8eb", "#f7f9fa") +
+      '<g stroke="#b9dc9a" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M12 20q10-8 20 0M30 16q10 6 20-2M50 20q12-8 22 2M72 14q10 8 20-2M90 22q10-6 18 2M14 32q8 6 18-2M96 34q8 4 14-2"/></g>' +
+      korokke(38, 44, -18) + korokke(78, 40, 14) + korokke(58, 66, -4) +
+      '<circle cx="102" cy="72" r="9" fill="#efefef" stroke="#c9c9c9" stroke-width="1"/><circle cx="102" cy="72" r="6" fill="#4a2a1a"/>',
+
+    salad:
+      '<circle cx="60" cy="48" r="43" fill="#e1eae7"/><circle cx="60" cy="48" r="39" fill="#f8fbfa"/>' +
+      '<g fill="#6cb84a"><circle cx="40" cy="32" r="12"/><circle cx="62" cy="26" r="13"/><circle cx="82" cy="38" r="12"/><circle cx="86" cy="60" r="12"/><circle cx="66" cy="72" r="13"/><circle cx="42" cy="66" r="12"/><circle cx="30" cy="50" r="11"/></g>' +
+      '<g fill="#8bd063"><circle cx="46" cy="38" r="8"/><circle cx="72" cy="34" r="8"/><circle cx="76" cy="62" r="8"/><circle cx="50" cy="62" r="8"/></g>' +
+      '<g fill="#e03b32"><circle cx="54" cy="47" r="6.5"/><circle cx="73" cy="52" r="6"/><circle cx="60" cy="61" r="5"/></g><circle cx="52" cy="45" r="1.8" fill="#f58a80"/>' +
+      dots([[44, 50], [66, 44], [80, 46], [58, 36], [68, 66], [38, 44]], 1.8, "#f6cf2a") +
+      '<g fill="none" stroke="#cfe9a6" stroke-width="2"><circle cx="82" cy="52" r="5"/><circle cx="46" cy="54" r="4.5"/></g>',
+
+    sandwich:
+      trayBase("#eceee9", "#f8f9f6") + sandwich(11, 22, -4) + sandwich(63, 26, 3),
+
+    onigiri:
+      trayBase("#e6e9e4", "#f6f7f3") + onigiri(33, 44) + onigiri(87, 44) +
+      '<rect x="14" y="70" width="92" height="10" rx="3" fill="#fff" opacity=".7"/>',
+
+    ohagi:
+      trayBase("#eee8d6", "#faf6ea") +
+      ohagiBall(34, 30, "#4a2c2a", "#8a5a52") +
+      ohagiBall(78, 30, "#dcb96e", "#f0d9a0", scatter(78, 30, "#b98f45")) +
+      ohagiBall(58, 62, "#a9c774", "#d3e6a8", scatter(58, 62, "#86a85a")) +
+      ohagiBall(93, 62, "#3a3535", "#7a7373", scatter(93, 62, "#f4f1e8")),
+
+    dango:
+      trayBase("#cdb27a", "#ecdcaa") + dangoSkewer(22) + dangoSkewer(44) + dangoSkewer(66),
+
+    daifuku:
+      trayBase("#e6e5df", "#f8f8f5") +
+      daifuku(34, 30, "#fbf8f0", "") +
+      daifuku(80, 30, "#f7d4dc", dots([[72, 32], [78, 36], [84, 31], [88, 36], [76, 28]], 1.2, "#6a5a48")) +
+      daifuku(58, 62, "#fbf8f0", '<ellipse cx="58" cy="60" rx="7" ry="5.5" fill="#e0364a" opacity=".55"/>'),
+
+    /* ---- ここからアメリカの商品 ---- */
+    burger:
+      trayBase("#d4b07a", "#ecd3a2") +
+      '<path d="M22 70h84v3a10 10 0 0 1-10 10H32a10 10 0 0 1-10-10z" fill="#dc8f34"/>' +
+      '<rect x="24" y="53" width="80" height="8" rx="3" fill="#e0453a"/>' +
+      '<rect x="20" y="58" width="88" height="12" rx="6" fill="#6b3b22"/>' +
+      '<path d="M20 44h88l-9 11-8-7-9 7-9-7-9 7-9-7-9 7-9-7-8 7z" fill="#f4c73a"/>' +
+      '<path d="M16 46q5.500-8 11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0v3H16z" fill="#6cb84a"/>' +
+      '<path d="M22 44C22 12 106 12 106 44z" fill="#dc8f34"/>' +
+      '<path d="M32 34C36 22 50 18 64 18" stroke="#eab364" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>' +
+      dots([[44, 28], [58, 24], [72, 26], [84, 32], [52, 36], [68, 34], [36, 38], [92, 39]], 1.600, "#f6e7c1"),
+
+    pizza:
+      trayBase("#d4b07a", "#ecd3a2") +
+      '<circle cx="60" cy="47" r="37" fill="#d9993f"/><circle cx="60" cy="47" r="32" fill="#f4c95d"/>' +
+      '<path d="M60 47V10M60 47L92 29M60 47L92 65M60 47V84M60 47L28 65M60 47L28 29" stroke="#d9993f" stroke-width="1" opacity=".55"/>' +
+      '<g fill="#c43b34"><circle cx="46" cy="32" r="6"/><circle cx="72" cy="30" r="6"/><circle cx="82" cy="52" r="6"/><circle cx="58" cy="50" r="6"/><circle cx="38" cy="56" r="6"/><circle cx="68" cy="68" r="6"/></g>' +
+      dots([[44, 30], [70, 28], [80, 50], [56, 48], [36, 54], [66, 66]], 1.200, "#8c221d") +
+      '<g fill="#3f8f3a"><ellipse cx="54" cy="66" rx="4" ry="2" transform="rotate(30 54 66)"/><ellipse cx="84" cy="38" rx="4" ry="2" transform="rotate(-30 84 38)"/><ellipse cx="48" cy="44" rx="4" ry="2"/></g>',
+
+    chicken:
+      '<defs>' + gingham("gA") + '</defs><rect x="3" y="5" width="114" height="84" rx="9" fill="#c8323a"/><rect x="7" y="9" width="106" height="76" rx="6" fill="url(#gA)"/>' +
+      drum(44, 32, -15) + drum(76, 40, 12) + drum(58, 64, -6),
+
+    fries:
+      trayBase("#f2eee6", "#fbf9f3") +
+      '<circle cx="28" cy="34" r="9" fill="#fff" stroke="#ddd"/><circle cx="28" cy="34" r="6" fill="#c8323a"/>' +
+      fries() +
+      '<path d="M42 50h72l-6 34H48z" fill="#d7191f"/><path d="M45 62h66l-1 6H44z" fill="#ffe11a"/>',
+
+    cobb:
+      '<defs><clipPath id="cbc"><circle cx="60" cy="48" r="36"/></clipPath></defs>' +
+      '<circle cx="60" cy="48" r="43" fill="#e1eae7"/><circle cx="60" cy="48" r="39" fill="#f8fbfa"/>' +
+      '<g clip-path="url(#cbc)">' +
+      '<rect x="20" y="10" width="80" height="14" fill="#6cb84a"/>' +
+      '<rect x="20" y="24" width="80" height="13" fill="#e03b32"/>' +
+      '<rect x="20" y="37" width="80" height="13" fill="#fbf1c8"/>' +
+      dots([[44, 43], [60, 43], [76, 43]], 3.500, "#f4c73a") +
+      '<rect x="20" y="50" width="80" height="13" fill="#a4472f"/>' +
+      '<path d="M20 55h80M20 60h80" stroke="#c96a4d" stroke-width="1.500"/>' +
+      '<rect x="20" y="63" width="80" height="12" fill="#b7d66b"/>' +
+      '<rect x="20" y="75" width="80" height="14" fill="#f6cf2a"/></g>',
+
+    club:
+      trayBase("#eceee9", "#f8f9f6") + clubStack(14, 26, -3) + clubStack(66, 28, 3),
+
+    donut:
+      trayBase("#f0e6d4", "#fbf6ee") +
+      donut(34, 30, "#f28aa8", "#fff") + donut(80, 30, "#5a3320", "#ffe11a") + donut(58, 62, "#f3d08a", "#fff7e0"),
+
+    pie:
+      '<defs><clipPath id="pc"><circle cx="60" cy="48" r="34"/></clipPath></defs>' +
+      '<circle cx="60" cy="48" r="42" fill="#c9ced2"/><circle cx="60" cy="48" r="39" fill="#e3e6e8"/>' +
+      '<circle cx="60" cy="48" r="35" fill="#d9a24e" stroke="#b8782c" stroke-width="1.500"/>' +
+      '<g clip-path="url(#pc)" stroke="#f0cf8a" stroke-width="3.500" opacity=".9">' + lattice() + '</g>' +
+      '<ellipse cx="60" cy="48" rx="4" ry="2.500" fill="#8c5a1f"/>',
+
+    cookie:
+      trayBase("#f2ece0", "#fffaf0") + cookie(34, 30) + cookie(80, 30) + cookie(58, 62)
+  };
+
+  var TYPES = {
+    bento:    { name: "幕の内弁当",       price: 498 },
+    sushi:    { name: "にぎり寿司 8貫",   price: 698 },
+    karaage:  { name: "若鶏のから揚げ",   price: 398 },
+    korokke:  { name: "コロッケ 3個入",   price: 258 },
+    salad:    { name: "彩り野菜サラダ",   price: 328 },
+    sandwich: { name: "ミックスサンド",   price: 278 },
+    onigiri:  { name: "おにぎり 2個入",   price: 258 },
+    ohagi:    { name: "おはぎ 4個入",     price: 398 },
+    dango:    { name: "三食団子 3本入",   price: 298 },
+    daifuku:  { name: "大福 3個入",       price: 348 },
+    burger:   { name: "チーズバーガー",   price: 598 },
+    pizza:    { name: "ペパロニピザ",     price: 780 },
+    chicken:  { name: "フライドチキン 3本", price: 498 },
+    fries:    { name: "フライドポテトL",  price: 298 },
+    cobb:     { name: "コブサラダ",       price: 428 },
+    club:     { name: "クラブサンド",     price: 448 },
+    donut:    { name: "ドーナツ 3個入",   price: 398 },
+    pie:      { name: "アップルパイ",     price: 348 },
+    cookie:   { name: "チョコチップクッキー", price: 328 }
+  };
+
+  // us は、ジョンが売り場をアメリカの商品にしたあとの棚
+  var ROWS = [
+    { name: "お弁当・お寿司",       note: "本日中にお召し上がりください", types: ["bento", "sushi"],
+      us: { name: "ハンバーガー・ピザ",           note: "ジョンが仕入れました", types: ["burger", "pizza"] } },
+    { name: "揚げ物",               note: "揚げたてを詰めています",       types: ["karaage", "korokke"],
+      us: { name: "フライドチキン・ポテト",       note: "ジョンが仕入れました", types: ["chicken", "fries"] } },
+    { name: "サラダ・パン・おにぎり", note: "ご自宅でお早めにどうぞ",       types: ["salad", "sandwich", "onigiri"],
+      us: { name: "サラダ・サンドイッチ",         note: "ジョンが仕入れました", types: ["cobb", "club"] } },
+    { name: "和菓子",               note: "いくえが納品しました",         types: ["ohagi", "dango", "daifuku"], late: true,
+      us: { name: "ドーナツ・パイ・クッキー",     note: "ジョンが仕入れました", types: ["donut", "pie", "cookie"] } }
+  ];
+  var IKUE_ROW = 3;
+  var IKUE_AT = 300;
+  var JOHN_AT = 600;
+  var john = { on: false, lastSay: 0 };
+  var paused = false;
+  var rowEls = [];
+
+  function typesFor(ri) { return john.on ? ROWS[ri].us.types : ROWS[ri].types; }
+
+  /* ---------- 状態 ---------- */
+  var KEY = "yuuyake-nebiki-v1";
+  var KINDS = [
+    { id: "k20", at: 0,   label: "20%引", rate: 0.8, say: "19時。ただいまタイムサービス中です。20%引のシールを貼りましょう。" },
+    { id: "k30", at: 60,  label: "30%引", rate: 0.7, say: "20時になりました。ここから30%引のシールです。" },
+    { id: "k50", at: 120, label: "半額",  rate: 0.5, say: "21時です。ここからは半額シールです。" }
+  ];
+  var CLOSE = 180;
+
+  var RIVAL_AT = 100;
+  var YAMADA_AT = 200;
+  var state = { count: 0, day: 1, min: 0, muted: false, w: 0, l: 0, yw: 0, yl: 0, shots: 0, sold: 0 };
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (saved && typeof saved === "object") {
+      state.shots = saved.shots | 0;
+      state.sold = saved.sold | 0;
+      state.w = saved.w | 0;
+      state.l = saved.l | 0;
+      state.yw = saved.yw | 0;
+      state.yl = saved.yl | 0;
+      state.count = saved.count | 0;
+      state.day = Math.max(1, saved.day | 0);
+      state.min = Math.min(CLOSE - 1, Math.max(0, saved.min | 0));
+      state.muted = !!saved.muted;
+    }
+  } catch (e) {}
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function kindAt(min) {
+    for (var i = KINDS.length - 1; i >= 0; i--) if (min >= KINDS[i].at) return KINDS[i];
+    return KINDS[0];
+  }
+
+  var d = new Date();
+  var EXP = ("0" + (d.getMonth() + 1)).slice(-2) + "." + ("0" + d.getDate()).slice(-2) + " 22:00";
+
+  /* ---------- DOM ---------- */
+  var $ = function (id) { return document.getElementById(id); };
+  var caseEl = $("case"), handEl = $("hand"), rhandEl = $("rhand"), yhandEl = $("yhand");
+  var slots = [];
+
+  function stickerHTML(k) {
+    return '<small>お値引き</small><b>' + k.label + '</b>';
+  }
+
+  function makePack(typeKey, idx) {
+    var t = TYPES[typeKey];
+    var el = document.createElement("button");
+    el.type = "button";
+    el.className = "pack in";
+    el.dataset.slot = idx;
+    el.setAttribute("aria-label", t.name + "にシールを貼る");
+    el.innerHTML = '<svg viewBox="0 0 120 96" aria-hidden="true">' + ART[typeKey] + '</svg>' +
+      '<span class="lid"></span>' +
+      '<span class="label"><b>' + t.name + '</b><i class="bar"></i><em>消費期限 ' + EXP + '</em><strong>¥' + t.price + '</strong></span>' +
+      '<span class="stk"></span>';
+    return el;
+  }
+
+  function updateTag(s) {
+    var t = TYPES[s.type];
+    var name = '<span class="tn">' + t.name + '</span>';
+    if (s.rate < 1) {
+      s.tag.innerHTML = name + '<span class="tp"><s>¥' + t.price + '</s><b class="off">¥' + Math.round(t.price * s.rate) + '</b></span>';
+    } else {
+      s.tag.innerHTML = name + '<span class="tp"><b>¥' + t.price + '</b></span>';
+    }
+  }
+
+  var n = 0;
+
+  var IKUE_FACE = '<svg viewBox="0 0 64 64" aria-hidden="true">' +
+    '<circle cx="32" cy="32" r="31" fill="#e3f1e4"/>' +
+    '<path d="M6 62c2-13 13-17 26-17s24 4 26 17z" fill="#3f8f6a"/>' +
+    '<path d="M23 47h18v15H23z" fill="#fff"/>' +
+    '<rect x="27" y="38" width="10" height="9" fill="#e6b891"/>' +
+    '<rect x="22" y="50" width="20" height="8" rx="1.5" fill="#fff3b0"/>' +
+    '<text x="32" y="56.500" text-anchor="middle" font-size="6" font-weight="900" fill="#14233c" font-family="\'Zen Kaku Gothic New\',\'Hiragino Sans\',\'Yu Gothic\',sans-serif">いくえ</text>' +
+    '<ellipse cx="32" cy="29" rx="12" ry="13.5" fill="#f2c9a5"/>' +
+    '<path d="M19.500 26c0-9 5-15 12.500-15s12.500 6 12.500 15c-4-4-8-5.500-12.500-5.500S23.500 22 19.500 26z" fill="#fff" stroke="#d8dfe2" stroke-width=".8"/>' +
+    '<path d="M44 22l8-3-2 9z" fill="#fff" stroke="#d8dfe2" stroke-width=".8"/>' +
+    '<path d="M24.500 31q2.500-2.500 5 0M34.500 31q2.500-2.500 5 0" stroke="#14233c" stroke-width="1.400" fill="none" stroke-linecap="round"/>' +
+    '<circle cx="23.500" cy="35" r="2.200" fill="#f28a8a" opacity=".5"/><circle cx="40.500" cy="35" r="2.200" fill="#f28a8a" opacity=".5"/>' +
+    '<path d="M28.500 37c2 2 5 2 7 0" stroke="#14233c" fill="none" stroke-width="1.300" stroke-linecap="round"/></svg>';
+
+  function buildRow(ri, deliver) {
+    var row = ROWS[ri];
+    var info = john.on ? row.us : row;
+    var sec = document.createElement("section");
+    sec.className = "row" + (deliver ? " deliver" : "");
+    var extra = row.late
+      ? '<span class="ikue"><span class="ikue-face">' + IKUE_FACE + '</span><span id="ikueSay" aria-live="polite"></span></span>'
+      : "";
+    sec.innerHTML = '<header class="row-h"><h2 class="pop">' + info.name + '</h2>' +
+      '<span class="note">' + info.note + '</span><span class="note">価格は税込</span>' + extra + '</header>';
+    var wrap = document.createElement("div");
+    wrap.className = "slots";
+    for (var c = 0; c < 4; c++) {
+      var slotEl = document.createElement("div");
+      slotEl.className = "slot";
+      var tag = document.createElement("div");
+      tag.className = "tag";
+      var s = { i: n, row: ri, type: info.types[(c + ri) % info.types.length], rate: 1, n: 0, timer: 0, tag: tag, el: slotEl };
+      s.pack = makePack(s.type, n);
+      if (deliver) s.pack.style.animationDelay = (250 + c * 110) + "ms";
+      else s.pack.classList.remove("in");
+      slotEl.appendChild(s.pack);
+      slotEl.appendChild(tag);
+      updateTag(s);
+      wrap.appendChild(slotEl);
+      slots.push(s);
+      n++;
+    }
+    sec.appendChild(wrap);
+    var rail = document.createElement("div");
+    rail.className = "rail";
+    sec.appendChild(rail);
+    caseEl.appendChild(sec);
+    rowEls[ri] = sec;
+    return sec;
+  }
+
+  ROWS.forEach(function (row, ri) { if (!row.late) buildRow(ri, false); });
+
+  /* ---------- 表示の更新 ---------- */
+  function pad(v, len) { return ("00000" + v).slice(-len); }
+
+  function renderHud() {
+    var t = 19 * 60 + state.min;
+    $("clock").textContent = pad(Math.floor(t / 60), 2) + ":" + pad(t % 60, 2);
+    $("count").textContent = pad(state.count, 5);
+    $("day").textContent = state.day + "日目";
+    var k = kindAt(state.min);
+    $("preview").innerHTML = '<div class="sticker ' + k.id + '">' + stickerHTML(k) + '</div>';
+    handEl.innerHTML = handHTML(k);
+  }
+
+  function say(msg) { $("say").textContent = msg; }
+
+  function sizeHand() {
+    var p = slots[0].pack;
+    var w = p.getBoundingClientRect().width;
+    if (w) {
+      handEl.style.setProperty("--hu", (w / 100).toFixed(2) + "px");
+      rhandEl.style.setProperty("--hu", (w / 100).toFixed(2) + "px");
+    }
+  }
+
+  /* ---------- 音 ---------- */
+  var actx = null;
+  function ctx() {
+    if (state.muted) return null;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === "suspended") actx.resume();
+      return actx;
+    } catch (e) { return null; }
+  }
+  function noiseBuf(c, dur) {
+    var b = c.createBuffer(1, Math.floor(c.sampleRate * dur), c.sampleRate);
+    var data = b.getChannelData(0);
+    for (var i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+    return b;
+  }
+  function peel(vol) {
+    var c = ctx(); if (!c) return;
+    var t = c.currentTime;
+    vol = vol || 1;
+    var src = c.createBufferSource(); src.buffer = noiseBuf(c, 0.18);
+    var f = c.createBiquadFilter(); f.type = "bandpass"; f.Q.value = 1.2;
+    f.frequency.setValueAtTime(1800, t); f.frequency.exponentialRampToValueAtTime(5200, t + 0.15);
+    var g = c.createGain();
+    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.16 * vol, t + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+    src.connect(f); f.connect(g); g.connect(c.destination); src.start(t);
+  }
+  function pat(vol, hz) {
+    var c = ctx(); if (!c) return;
+    vol = vol || 1; hz = hz || 160;
+    var t = c.currentTime;
+    var o = c.createOscillator(); o.type = "sine";
+    o.frequency.setValueAtTime(hz, t); o.frequency.exponentialRampToValueAtTime(hz / 3, t + 0.09);
+    var g = c.createGain(); g.gain.setValueAtTime(0.3 * vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.12);
+    var src = c.createBufferSource(); src.buffer = noiseBuf(c, 0.05);
+    var f = c.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = 1100;
+    var g2 = c.createGain(); g2.gain.setValueAtTime(0.14 * vol, t); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
+    src.connect(f); f.connect(g2); g2.connect(c.destination); src.start(t);
+  }
+  function chime(notes) {
+    var c = ctx(); if (!c) return;
+    (notes || [880, 1174.7, 1568]).forEach(function (fq, i) {
+      var t = c.currentTime + i * 0.3;
+      var o = c.createOscillator(); o.type = "sine"; o.frequency.value = fq;
+      var g = c.createGain();
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.09, t + 0.03); g.gain.exponentialRampToValueAtTime(0.0005, t + 1.1);
+      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 1.2);
+    });
+  }
+
+  /* ---------- シールを貼る ---------- */
+  function addSticker(s, k, x, y, rot, still, theirs) {
+    var el = document.createElement("div");
+    el.className = "sticker " + k.id + (still ? " still" : "") + (theirs ? " theirs" : "");
+    el.style.left = x + "%";
+    el.style.top = y + "%";
+    el.style.setProperty("--rot", rot + "deg");
+    el.dataset.rate = k.rate;
+    el.innerHTML = stickerHTML(k);
+    var stk = s.pack.querySelector(".stk");
+    stk.appendChild(el);
+    while (stk.children.length > 8) stk.removeChild(stk.firstChild);
+    s.n = liveStickers(s).length;
+    s.rate = Math.min(s.rate, k.rate);
+    updateTag(s);
+  }
+
+  // はがされている最中のシールを除いた、いま貼ってあるシール
+  function liveStickers(s) {
+    return Array.prototype.filter.call(s.pack.querySelector(".stk").children, function (e) {
+      return !e.classList.contains("peeling");
+    });
+  }
+
+  function schedule(s, ms) {
+    clearTimeout(s.timer);
+    s.timer = setTimeout(function () { take(s); }, ms);
+  }
+
+  function take(s) {
+    s.pack.classList.add("taken");
+    state.sold++;
+    if (rival.on && s.owner) {
+      if (s.owner === "tan") rival.tan++; else rival.me++;
+      renderVersus();
+      reactRival();
+    }
+    s.owner = null;
+    setTimeout(function () { restock(s); }, 650);
+  }
+
+  function restock(s) {
+    var types = typesFor(s.row);
+    var next = types[Math.floor(Math.random() * types.length)];
+    var np = makePack(next, s.i);
+    s.pack.replaceWith(np);
+    s.pack = np; s.type = next; s.rate = 1; s.n = 0; s.owner = null;
+    updateTag(s);
+    sizeHand();
+    if (s.row === IKUE_ROW) reactIkue();
+    if (john.on && Date.now() - john.lastSay > 10000) johnSay(pick(JLINES.restock));
+  }
+
+  /* ---------- パートさん「いくえ」（和菓子の納品） ---------- */
+  var ikue = { on: false, lastSay: 0 };
+
+  var ILINES = {
+    enter: "追加のお菓子をお持ちしました。おはぎと三食団子と大福です。",
+    us: ["ドーナツ、あまくておいしいですよ。", "アップルパイ、焼きたてです。", "クッキーもどうぞ。", "…おはぎ、また置いていいですか?"],
+    restock: ["補充しておきますね。", "できたてですよ。", "甘いものもどうぞ。", "おはぎ、あんこたっぷりです。", "お団子は三色そろっています。", "大福、やわらかいうちにどうぞ。"]
+  };
+
+  function ikueSay(msg) {
+    var el = $("ikueSay");
+    if (el) el.innerHTML = "<b>いくえ</b>「" + msg + "」";
+    ikue.lastSay = Date.now();
+  }
+
+  function reactIkue() {
+    if (!ikue.on || Date.now() - ikue.lastSay < 12000) return;
+    ikueSay(pick(john.on ? ILINES.us : ILINES.restock));
+  }
+
+  // 300枚目で、和菓子の段を一番下に追加する
+  function startIkue(entry) {
+    if (ikue.on) return;
+    ikue.on = true;
+    var sec = buildRow(IKUE_ROW, entry);
+    if (entry) {
+      ikueSay(ILINES.enter);
+      say("300枚達成。パートのいくえさんが、おはぎ・三食団子・大福を届けてくれました。一番下の段に並んでいます。");
+      chime([659.3, 784, 988]);
+      sizeHand();
+      setTimeout(function () { sec.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 700);
+    } else {
+      ikueSay(pick(ILINES.restock));
+    }
+  }
+
+  /* ---------- 覚醒と、店長「おださん」のシール貼り銃 ---------- */
+  var AWAKE_AT = 400;
+  var boost = 1;
+  var oda = { on: false, lastSay: 0 };
+  var gun = { on: false, timer: 0, held: false, px: 0, py: 0, suppress: false, acc: 0 };
+
+  var GUN_SVG = '<svg class="gun" viewBox="0 0 80 50" aria-hidden="true">' +
+    '<path d="M6 12h46a6 6 0 0 1 6 6v6H12a6 6 0 0 1-6-6z" fill="#d7191f"/>' +
+    '<rect x="52" y="14" width="20" height="8" rx="3" fill="#ffe11a"/>' +
+    '<rect x="8" y="16" width="16" height="3" rx="1.500" fill="#fff" opacity=".6"/>' +
+    '<path d="M18 24h14l-4 20H14z" fill="#a80f16"/>' +
+    '<circle cx="28" cy="10" r="9" fill="#ffe11a" stroke="#d7191f" stroke-width="2"/>' +
+    '<circle cx="28" cy="10" r="3" fill="#d7191f"/></svg>';
+
+  function handHTML(k) {
+    if (gun.on) return '<span class="aim"></span>' + GUN_SVG;
+    return '<div class="sticker ' + k.id + '">' + stickerHTML(k) + '</div>';
+  }
+
+  var OLINES = {
+    enter: "ここまでよく貼ってくれた。これを使ってくれ、シール貼り銃だ。商品を押しっぱなしにすれば連射できる。",
+    fire: ["いい貼りっぷりだ。", "シールの在庫なら気にするな。", "たなかとやまだが本気を出した。負けるなよ。", "その調子だ。閉店まで頼んだぞ。"]
+  };
+
+  function odaSay(msg) {
+    $("odaBubble").innerHTML = "<b>おださん</b>「" + msg + "」";
+    oda.lastSay = Date.now();
+  }
+
+  // たなかとやまだが覚醒して、動きが1.5倍になる
+  function awaken(entry) {
+    if (boost > 1) return;
+    boost = 1.5;
+    ["versus", "yamada"].forEach(function (id) {
+      var v = $(id);
+      v.classList.add("awake");
+      v.querySelector(".vs-head b").insertAdjacentHTML("afterbegin", '<span class="awake-badge">覚醒</span>');
+    });
+    if (entry) {
+      bubble("ここからは本気でいきます。");
+      yBubble("わしも本気を出すとするかの。");
+    }
+  }
+
+  function startOda(entry) {
+    if (oda.on) return;
+    oda.on = true;
+    gun.on = true;
+    var v = $("oda");
+    v.hidden = false;
+    $("odaShots").textContent = state.shots;
+    renderHud();
+    if (entry) {
+      v.classList.add("enter");
+      odaSay(OLINES.enter);
+      say("400枚達成。たなかとやまだが覚醒しました。動きが1.5倍になります。店長のおださんから、シール貼り銃を託されました。商品を長押しすると連射できます。");
+      chime([523.3, 659.3, 784, 1046.5]);
+    } else {
+      odaSay(pick(OLINES.fire));
+    }
+  }
+
+  function fire() {
+    var el = document.elementFromPoint(gun.px, gun.py);
+    var p = el && el.closest ? el.closest(".pack") : null;
+    if (!p || p.classList.contains("taken")) return;
+    var s = slots[+p.dataset.slot];
+    var r = p.getBoundingClientRect();
+    var jx = (Math.random() - 0.5) * r.width * 0.1;
+    var jy = (Math.random() - 0.5) * r.height * 0.1;
+    handEl.classList.remove("fire");
+    void handEl.offsetWidth;
+    handEl.classList.add("fire");
+    pat(0.5, 170 + Math.random() * 70);
+    state.shots++;
+    $("odaShots").textContent = state.shots;
+    if (state.shots % 60 === 0 && Date.now() - oda.lastSay > 8000) odaSay(pick(OLINES.fire));
+    stick(s, gun.px + jx, gun.py + jy, false, true);
+  }
+
+  function startFire(x, y) {
+    gun.held = true;
+    gun.px = x;
+    gun.py = y;
+    gun.suppress = true;
+    clearInterval(gun.timer);
+    fire();
+    gun.timer = setInterval(fire, 110);
+  }
+
+  function stopFire() {
+    if (!gun.held) return;
+    gun.held = false;
+    clearInterval(gun.timer);
+    setTimeout(function () { gun.suppress = false; }, 200);
+  }
+
+  // 連射のとき、時刻が1分進むまでの発数
+  var GUN_MIN_EVERY = 4;
+
+  function stick(s, clientX, clientY, viaKey, fromGun) {
+    var r = s.pack.getBoundingClientRect();
+    var x = viaKey ? 32 + Math.random() * 36 : ((clientX - r.left) / r.width) * 100;
+    var y = viaKey ? 32 + Math.random() * 36 : ((clientY - r.top) / r.height) * 100;
+    x = Math.max(24, Math.min(76, x));
+    y = Math.max(26, Math.min(74, y));
+    var before = kindAt(state.min);
+    var k = before;
+    addSticker(s, k, x.toFixed(1), y.toFixed(1), Math.round(Math.random() * 28 - 14), false);
+    schedule(s, 1700 + Math.random() * 900);
+    s.owner = "me";
+    s.pack.classList.remove("theirs");
+    if (rival.on) { rival.stMe++; renderVersus(); }
+    if (yam.on) renderYam();
+
+    state.count++;
+    // 連射のときは、数発ごとに1分だけ進める
+    var tick = !fromGun || ++gun.acc % GUN_MIN_EVERY === 0;
+    if (tick) state.min++;
+    if (tick && state.min >= CLOSE) {
+      state.min = 0;
+      state.day++;
+      var result = settleYam() + settleDay();
+      say("本日の営業は終了しました。" + result + "あすも19時からタイムサービスです。");
+      chime();
+    } else if (tick) {
+      var after = kindAt(state.min);
+      if (after.id !== before.id) say(after.say);
+      else if (state.min === CLOSE - 10) say("まもなく閉店の時間です。最後までシールを貼ってまいりましょう。");
+    }
+    renderHud();
+    if (state.count === RIVAL_AT && !rival.on) startRival(true);
+    if (state.count === YAMADA_AT && !yam.on) startYamada(true);
+    if (state.count === IKUE_AT && !ikue.on) startIkue(true);
+    if (state.count === AWAKE_AT && !oda.on) { awaken(true); startOda(true); }
+    if (state.count >= ROBO_AT) syncRobos(true);
+    if (state.count === JOHN_AT && !john.on) startJohn(true);
+    save();
+  }
+
+  /* ---------- ライバル「たなか」 ---------- */
+  var rival = { on: false, timer: 0, me: 0, tan: 0, stMe: 0, stTan: 0, lastSay: 0 };
+
+  var LINES = {
+    enter: "こんばんは。ここからは私も貼らせていただきます。",
+    ahead: ["お先に売れましたね。", "この調子でいきますよ。", "貼るのは早いほうなんです。"],
+    behind: ["…なかなかやりますね。", "まだ夜は長いですよ。", "追いつきますから。"],
+    even: ["負けませんよ。", "いい勝負ですね。", "手が止まりませんね、お互いに。"],
+    win: "本日は私の勝ちです。またあした。",
+    lose: "今日は負けました。あしたは貼り負けません。",
+    draw: "引き分けですね。あしたも貼りましょう。"
+  };
+
+  function bubble(msg) {
+    $("bubble").innerHTML = "<b>たなか</b>「" + msg + "」";
+    rival.lastSay = Date.now();
+  }
+
+  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+  function reactRival() {
+    if (Date.now() - rival.lastSay < 9000) return;
+    var diff = rival.tan - rival.me;
+    bubble(pick(diff >= 2 ? LINES.ahead : diff <= -2 ? LINES.behind : LINES.even));
+  }
+
+  function renderVersus() {
+    var total = rival.me + rival.tan;
+    var pm = total ? (rival.me / total) * 100 : 50;
+    $("barMe").style.flex = "0 0 " + pm.toFixed(1) + "%";
+    $("barTan").style.flex = "0 0 " + (100 - pm).toFixed(1) + "%";
+    $("meScore").textContent = rival.me;
+    $("tanScore").textContent = rival.tan;
+    $("meSt").textContent = rival.stMe;
+    $("tanSt").textContent = rival.stTan;
+    $("record").textContent = "通算 " + state.w + "勝 " + state.l + "敗";
+  }
+
+  // 閉店時に勝敗を決めて、その日の集計をリセットする
+  function settleDay() {
+    if (!rival.on) return "";
+    var me = rival.me, tan = rival.tan, out, line;
+    if (me > tan) { state.w++; out = "あなたの勝ちです。"; line = LINES.lose; }
+    else if (me < tan) { state.l++; out = "たなかの勝ちです。"; line = LINES.win; }
+    else { out = "引き分けです。"; line = LINES.draw; }
+    var msg = "売上勝負は、あなた" + me + "点、たなか" + tan + "点。" + out;
+    rival.me = rival.tan = rival.stMe = rival.stTan = 0;
+    renderVersus();
+    bubble(line);
+    return msg;
+  }
+
+  function pace() {
+    return (Math.max(900, 1500 - (state.day - 1) * 60) + Math.random() * 400 - 200) / boost;
+  }
+
+  function startRival(entry) {
+    rival.on = true;
+    var v = $("versus");
+    v.hidden = false;
+    renderVersus();
+    if (entry) {
+      v.classList.add("enter");
+      say("100枚達成。ライバルのたなかが売り場に入りました。売れた点数で勝負です。");
+      bubble(LINES.enter);
+      chime([523.3, 392]);
+    } else {
+      bubble(pick(LINES.even));
+    }
+    rival.timer = setTimeout(rivalMove, entry ? 2200 : pace());
+  }
+
+  function rivalMove() {
+    if (document.hidden || paused) { rival.timer = setTimeout(rivalMove, 1000); return; }
+    var free = slots.filter(function (s) {
+      return s.el.offsetParent !== null && !s.pack.classList.contains("taken");
+    });
+    var fresh = free.filter(function (s) { return s.n === 0; });
+    var pool = fresh.length ? fresh : free;
+    if (!pool.length) { rival.timer = setTimeout(rivalMove, pace()); return; }
+
+    var s = pool[Math.floor(Math.random() * pool.length)];
+    var pack = s.pack;
+    var r = pack.getBoundingClientRect();
+    var tx = r.left + r.width * (0.3 + Math.random() * 0.4);
+    var ty = r.top + r.height * (0.3 + Math.random() * 0.4);
+    var k = kindAt(state.min);
+
+    rhandEl.innerHTML = '<div class="sticker ' + k.id + ' theirs">' + stickerHTML(k) + '</div>';
+    rhandEl.classList.remove("go", "show");
+    rhandEl.style.transform = "translate3d(" + (tx + 90) + "px," + (ty - 70) + "px,0)";
+    void rhandEl.offsetWidth;
+    rhandEl.classList.add("go", "show");
+    rhandEl.style.transform = "translate3d(" + tx + "px," + ty + "px,0)";
+
+    setTimeout(function () {
+      rhandEl.classList.remove("show");
+      if (!rival.on || !pack.isConnected || pack !== s.pack || pack.classList.contains("taken")) return;
+      var r2 = pack.getBoundingClientRect();
+      var x = Math.max(24, Math.min(76, ((tx - r2.left) / r2.width) * 100));
+      var y = Math.max(26, Math.min(74, ((ty - r2.top) / r2.height) * 100));
+      addSticker(s, kindAt(state.min), x.toFixed(1), y.toFixed(1), Math.round(Math.random() * 28 - 14), false, true);
+      s.owner = "tan";
+      pack.classList.add("theirs");
+      schedule(s, 1700 + Math.random() * 900);
+      rival.stTan++;
+      renderVersus();
+      pat(0.45, 230);
+    }, 390);
+
+    rival.timer = setTimeout(rivalMove, pace());
+  }
+
+  /* ---------- シールはがし「やまだ」 ---------- */
+  var yam = { on: false, timer: 0, peeled: 0, missed: 0, lastSay: 0 };
+
+  var YLINES = {
+    enter: "ほほう、ずいぶん貼ったのう。どれ、少し剥がさせてもらおうか。",
+    clean: ["きれいに剥がれたわい。", "ほれ、まっさらじゃ。", "この糊は剥がしやすいのう。"],
+    ahead: ["ほっほっほ、貼り残しが多いのう。", "わしの指はまだまだ動くぞ。", "剥がすのは得意でな。"],
+    behind: ["むむ、貼るのが早いのう。", "若いもんは元気じゃな。", "こりゃ骨が折れるわい。"],
+    win: "今日はわしの勝ちじゃ。また明日のう。",
+    lose: "今日はおぬしの勝ちじゃ。明日は負けんぞ。",
+    draw: "引き分けじゃな。明日もやるかの。"
+  };
+
+  function yBubble(msg) {
+    $("yaBubble").innerHTML = "<b>やまだ</b>「" + msg + "」";
+    yam.lastSay = Date.now();
+  }
+
+  function renderYam() {
+    var total = rival.stMe + yam.peeled;
+    var pm = total ? (rival.stMe / total) * 100 : 50;
+    $("barYaMe").style.flex = "0 0 " + pm.toFixed(1) + "%";
+    $("barYaPeel").style.flex = "0 0 " + (100 - pm).toFixed(1) + "%";
+    $("yaMe").textContent = rival.stMe;
+    $("yaPeel").textContent = yam.peeled;
+    $("yaMiss").textContent = yam.missed;
+    $("yaRecord").textContent = "通算 " + state.yw + "勝 " + state.yl + "敗";
+  }
+
+  function reactYam(cleaned) {
+    if (Date.now() - yam.lastSay < 9000) return;
+    if (cleaned && Math.random() < 0.6) { yBubble(pick(YLINES.clean)); return; }
+    yBubble(pick(rival.stMe >= yam.peeled ? YLINES.behind : YLINES.ahead));
+  }
+
+  // 閉店時に、あなたの貼った枚数とやまだのはがした枚数を比べる
+  function settleYam() {
+    if (!yam.on) return "";
+    var me = rival.stMe, pe = yam.peeled, out, line;
+    if (me > pe) { state.yw++; out = "あなたの貼り勝ちです。"; line = YLINES.lose; }
+    else if (me < pe) { state.yl++; out = "やまだのはがし勝ちです。"; line = YLINES.win; }
+    else { out = "引き分けです。"; line = YLINES.draw; }
+    var msg = "はがし勝負は、貼った" + me + "枚に対して、はがされた" + pe + "枚。" + out;
+    yam.peeled = 0;
+    yam.missed = 0;
+    yBubble(line);
+    // 貼った枚数はたなか勝負の集計と共通なので、そちらのリセット後に表示を更新する
+    setTimeout(renderYam, 0);
+    return msg;
+  }
+
+  function yPace() {
+    return (Math.max(800, 1600 - (state.day - 1) * 50) + Math.random() * 400 - 200) / boost;
+  }
+
+  function startYamada(entry) {
+    yam.on = true;
+    var v = $("yamada");
+    v.hidden = false;
+    renderYam();
+    if (entry) {
+      v.classList.add("enter");
+      say("200枚達成。シールはがしのやまだが売り場に現れました。貼ったシールを剥がされます。");
+      yBubble(YLINES.enter);
+      chime([392, 330, 262]);
+    } else {
+      yBubble(pick(YLINES.ahead));
+    }
+    yam.timer = setTimeout(yamadaMove, entry ? 3000 : yPace());
+  }
+
+  // いちばん上に貼ってあるシールを1枚はがす。最後の1枚なら売れなくなる。
+  function peelOff(s) {
+    var live = liveStickers(s);
+    if (!live.length) return false;
+    var left = detachSticker(s, live[live.length - 1], null, 480);
+    yam.peeled++;
+    if (!left) yam.missed++;
+    renderYam();
+    reactYam(!left);
+    return true;
+  }
+
+  // シールを1枚外して、残りのシールから値段・持ち主・売れるタイミングを決め直す。残った枚数を返す。
+  function detachSticker(s, el, cls, ms) {
+    var live = liveStickers(s);
+    el.classList.add("peeling");
+    if (cls) el.classList.add(cls);
+    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, ms);
+
+    var left = live.filter(function (e) { return e !== el; });
+    s.n = left.length;
+    s.rate = left.reduce(function (m, e) { return Math.min(m, +e.dataset.rate); }, 1);
+    if (left.length) {
+      s.owner = left[left.length - 1].classList.contains("theirs") ? "tan" : "me";
+    } else {
+      s.owner = null;
+      clearTimeout(s.timer);
+    }
+    s.pack.classList.toggle("theirs", s.owner === "tan");
+    updateTag(s);
+    return left.length;
+  }
+
+  /* ---------- お掃除ロボット「シリボ」（勝負ではない） ---------- */
+  var ROBO_AT = 500;
+  var robo = { on: false, list: [], raf: 0, last: 0, lastSay: 0 };
+
+  var RLINES = ["ピピッ。シールを見つけました。", "お掃除中です。ウィーン。", "ピカピカにします。", "ゴシゴシ。回収しました。", "ぶつかっても大丈夫です。"];
+
+  var ROBO_SVG = '<svg viewBox="0 0 64 64" aria-hidden="true">' +
+    '<g class="brush"><path d="M6 52l-4 5M6 52l-1 7M6 52l5 5M6 52l-6-1M6 52l3-6" stroke="#7a8a90" stroke-width="2" stroke-linecap="round" fill="none"/></g>' +
+    '<g class="brush"><path d="M58 52l4 5M58 52l1 7M58 52l-5 5M58 52l6-1M58 52l-3-6" stroke="#7a8a90" stroke-width="2" stroke-linecap="round" fill="none"/></g>' +
+    '<circle cx="32" cy="32" r="29" style="fill:var(--rb)" stroke="#aab6ba" stroke-width="2"/>' +
+    '<circle cx="32" cy="32" r="24" fill="#eef2f3"/>' +
+    '<rect x="15" y="21" width="34" height="22" rx="11" fill="#1c2b33"/>' +
+    '<circle cx="26" cy="31" r="3.400" fill="currentColor"/><circle cx="38" cy="31" r="3.400" fill="currentColor"/>' +
+    '<path d="M28 37q4 3 8 0" stroke="currentColor" stroke-width="1.600" fill="none" stroke-linecap="round"/>' +
+    '<circle cx="32" cy="9" r="2.600" fill="currentColor"/>' +
+    '<text x="32" y="53" text-anchor="middle" font-size="6.500" font-weight="900" fill="#14233c" font-family="\'Zen Kaku Gothic New\',\'Hiragino Sans\',\'Yu Gothic\',sans-serif">シリボ</text></svg>';
+
+  function roboSay(msg) {
+    $("roboBubble").innerHTML = "<b>シリボ</b>「" + msg + "」";
+    robo.lastSay = Date.now();
+  }
+
+  // ロボットに掃除されたシール。やまだの集計には入れない。
+  function sweepSticker(s, el) {
+    detachSticker(s, el, "swept", 400);
+  }
+
+  function roboClean(r) {
+    var er = r.el.getBoundingClientRect();
+    var cx = er.left + er.width / 2, cy = er.top + er.height / 2, rad = er.width / 2;
+    for (var i = 0; i < slots.length; i++) {
+      var s = slots[i];
+      if (s.el.offsetParent === null || !s.pack.isConnected || s.pack.classList.contains("taken")) continue;
+      var pr = s.pack.getBoundingClientRect();
+      if (cx + rad < pr.left || cx - rad > pr.right || cy + rad < pr.top || cy - rad > pr.bottom) continue;
+      var live = liveStickers(s);
+      for (var j = live.length - 1; j >= 0; j--) {
+        var br = live[j].getBoundingClientRect();
+        if (Math.hypot(cx - (br.left + br.width / 2), cy - (br.top + br.height / 2)) < rad + 4) {
+          sweepSticker(s, live[j]);
+          if (Date.now() - robo.lastSay > 8000) roboSay(RLINES[Math.floor(Math.random() * RLINES.length)]);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function roboTick(t) {
+    if (!robo.on) return;
+    var dt = Math.min(0.05, (t - robo.last) / 1000) || 0;
+    robo.last = t;
+    if (!paused && !document.hidden) {
+      var layer = $("robots"), W = layer.clientWidth, H = layer.clientHeight;
+      robo.list.forEach(function (r) {
+        var half = r.el.offsetWidth / 2;
+        r.turn -= dt;
+        if (r.turn <= 0) { r.a += (Math.random() - 0.5) * 1.6; r.turn = 1 + Math.random() * 2; }
+        var busy = t < r.cool;
+        var sp = busy ? 8 : 62;
+        r.x += Math.cos(r.a) * sp * dt;
+        r.y += Math.sin(r.a) * sp * dt;
+        if (r.x < half) { r.x = half; r.a = Math.PI - r.a; } else if (r.x > W - half) { r.x = W - half; r.a = Math.PI - r.a; }
+        if (r.y < half) { r.y = half; r.a = -r.a; } else if (r.y > H - half) { r.y = H - half; r.a = -r.a; }
+        r.el.style.transform = "translate3d(" + r.x.toFixed(1) + "px," + r.y.toFixed(1) + "px,0)";
+        r.el.classList.toggle("busy", busy);
+        if (!busy && t - r.check > 140) {
+          r.check = t;
+          if (roboClean(r)) r.cool = t + 650;
+        }
+      });
+    }
+    robo.raf = requestAnimationFrame(roboTick);
+  }
+
+  // 500枚で4台。そのあと30枚ごとに1台ずつ増えて、最大15台。
+  var ROBO_START = 4;
+  var ROBO_STEP = 30;
+  var ROBO_MAX = 15;
+  var ROBO_COLORS = [["#1fbf8a", "#f4f6f7"], ["#ee5f9c", "#fbf1f5"], ["#e08a0a", "#fdf6e6"], ["#3d8bf2", "#eef4fd"], ["#9b6bdc", "#f5f0fc"], ["#e5533f", "#fdf0ee"]];
+
+  function roboTarget(count) {
+    if (count < ROBO_AT) return 0;
+    return Math.min(ROBO_MAX, ROBO_START + Math.floor((count - ROBO_AT) / ROBO_STEP));
+  }
+
+  function addRobo(i) {
+    var layer = $("robots");
+    var W = layer.clientWidth || 600, H = layer.clientHeight || 600;
+    var c = ROBO_COLORS[i % ROBO_COLORS.length];
+    var el = document.createElement("div");
+    el.className = "robo";
+    el.style.setProperty("--rc", c[0]);
+    el.style.setProperty("--rb", c[1]);
+    el.innerHTML = ROBO_SVG;
+    layer.appendChild(el);
+    robo.list.push({
+      el: el,
+      x: W * (0.1 + Math.random() * 0.8),
+      y: H * (0.1 + Math.random() * 0.8),
+      a: Math.random() * Math.PI * 2,
+      turn: 0,
+      cool: 0,
+      check: Math.random() * 140
+    });
+  }
+
+  // 貼った枚数に合わせて、ロボットの台数をそろえる
+  function syncRobos(entry) {
+    var target = roboTarget(state.count);
+    if (!target || robo.list.length >= target) return;
+    var first = !robo.on;
+    if (first) {
+      robo.on = true;
+      $("roboPanel").hidden = false;
+      $("roboFace").innerHTML = ROBO_SVG;
+      robo.last = performance.now();
+      robo.raf = requestAnimationFrame(roboTick);
+    }
+    while (robo.list.length < target) addRobo(robo.list.length);
+    var n = robo.list.length;
+    $("roboCount").textContent = n;
+    if (!entry) { roboSay(RLINES[0]); return; }
+    if (first) {
+      roboSay("ピピッ。お掃除を始めます。");
+      say("500枚達成。お掃除ロボットのシリボが" + n + "台、売り場に現れました。貼ってあるシールを掃除して回ります。勝負ではないので、ゆっくり見守ってください。");
+      chime([784, 988, 1175]);
+    } else {
+      roboSay(n >= ROBO_MAX ? "これで全員そろいました。" : "仲間が増えました。");
+      say(n >= ROBO_MAX ? "シリボが" + n + "台になりました。これ以上は増えません。" : "シリボが1台増えて、" + n + "台になりました。");
+    }
+  }
+
+  function stopRobos() {
+    robo.on = false;
+    cancelAnimationFrame(robo.raf);
+    robo.list.length = 0;
+    $("robots").innerHTML = "";
+    $("roboPanel").hidden = true;
+    $("roboBubble").innerHTML = "";
+    robo.lastSay = 0;
+  }
+
+  function yamadaMove() {
+    if (document.hidden || paused) { yam.timer = setTimeout(yamadaMove, 1000); return; }
+    var pool = slots.filter(function (s) {
+      return s.el.offsetParent !== null && !s.pack.classList.contains("taken") && liveStickers(s).length > 0;
+    });
+    if (!pool.length) { yam.timer = setTimeout(yamadaMove, 700); return; }
+
+    var s = pool[Math.floor(Math.random() * pool.length)];
+    var pack = s.pack;
+    var live = liveStickers(s);
+    var r = live[live.length - 1].getBoundingClientRect();
+    var tx = r.left + r.width / 2;
+    var ty = r.top + r.height / 2;
+
+    yhandEl.classList.remove("go", "show");
+    yhandEl.style.transform = "translate3d(" + (tx + 100) + "px," + (ty - 80) + "px,0)";
+    void yhandEl.offsetWidth;
+    yhandEl.classList.add("go", "show");
+    yhandEl.style.transform = "translate3d(" + tx + "px," + ty + "px,0)";
+
+    setTimeout(function () {
+      if (yam.on && pack.isConnected && pack === s.pack && !pack.classList.contains("taken") && peelOff(s)) {
+        peel(0.7);
+        yhandEl.style.transform = "translate3d(" + (tx + 50) + "px," + (ty - 60) + "px,0)";
+      }
+      setTimeout(function () { yhandEl.classList.remove("show"); }, 320);
+    }, 440);
+
+    yam.timer = setTimeout(yamadaMove, yPace());
+  }
+
+  caseEl.addEventListener("pointerdown", function (e) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    var p = e.target.closest(".pack");
+    if (!p || p.classList.contains("taken")) return;
+    handEl.classList.add("press");
+    if (gun.on) { startFire(e.clientX, e.clientY); return; }
+    peel();
+  });
+  window.addEventListener("pointermove", function (e) {
+    if (gun.held) { gun.px = e.clientX; gun.py = e.clientY; }
+  });
+  function release() { handEl.classList.remove("press"); stopFire(); }
+  window.addEventListener("pointerup", release);
+  window.addEventListener("pointercancel", release);
+  window.addEventListener("blur", release);
+  document.addEventListener("visibilitychange", function () { if (document.hidden) release(); });
+  caseEl.addEventListener("contextmenu", function (e) { if (gun.on) e.preventDefault(); });
+
+  caseEl.addEventListener("click", function (e) {
+    if (gun.suppress && e.detail !== 0) return;
+    var p = e.target.closest(".pack");
+    if (!p || p.classList.contains("taken")) return;
+    var s = slots[+p.dataset.slot];
+    var viaKey = e.detail === 0;
+    if (viaKey) { peel(); setTimeout(pat, 90); } else { pat(); }
+    stick(s, e.clientX, e.clientY, viaKey);
+  });
+
+  /* 手に持ったシール */
+  caseEl.addEventListener("pointermove", function (e) {
+    if (e.pointerType !== "mouse") return;
+    caseEl.classList.add("hand-on");
+    handEl.classList.add("show");
+    handEl.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)";
+  });
+  caseEl.addEventListener("pointerleave", function () {
+    handEl.classList.remove("show");
+    caseEl.classList.remove("hand-on");
+  });
+
+  $("mute").addEventListener("click", function () {
+    state.muted = !state.muted;
+    this.setAttribute("aria-pressed", String(!state.muted));
+    this.textContent = state.muted ? "音 OFF" : "音 ON";
+    save();
+  });
+
+  window.addEventListener("resize", sizeHand);
+
+  /* ---------- アメリカ人店員「ジョン」 ---------- */
+  var JLINES = {
+    enter: "ハーイ! 今日からここはアメリカンだ。全部アメリカの商品にしておいたよ。",
+    restock: ["ニューアイテム、入荷だよ!", "ハンバーガー、あったかいうちにどうぞ。", "アメリカのスーパーは、なんでもビッグなのさ。", "ドーナツは、正義だね。"]
+  };
+
+  function johnSay(msg) {
+    $("johnBubble").innerHTML = "<b>ジョン</b>「" + msg + "」";
+    john.lastSay = Date.now();
+  }
+
+  // いまの棚の商品を、アメリカの商品に入れ替える。貼ってあるシールはそのまま残す。
+  function convertSlot(s, delay) {
+    if (s.pack.classList.contains("taken")) return;
+    var types = typesFor(s.row);
+    var next = types[Math.floor(Math.random() * types.length)];
+    var np = makePack(next, s.i);
+    var from = s.pack.querySelector(".stk"), to = np.querySelector(".stk");
+    while (from.firstChild) to.appendChild(from.firstChild);
+    if (s.pack.classList.contains("theirs")) np.classList.add("theirs");
+    if (delay === null) np.classList.remove("in"); else np.style.animationDelay = delay + "ms";
+    s.pack.replaceWith(np);
+    s.pack = np;
+    s.type = next;
+    updateTag(s);
+  }
+
+  function startJohn(entry) {
+    if (john.on) return;
+    john.on = true;
+    document.body.classList.add("usa");
+    $("eyebrow").textContent = "スーパー ゆうやけ　アメリカンコーナー";
+    rowEls.forEach(function (el, ri) {
+      if (!el) return;
+      el.querySelector(".pop").textContent = ROWS[ri].us.name;
+      el.querySelector(".note").textContent = ROWS[ri].us.note;
+    });
+    slots.forEach(function (s, i) { convertSlot(s, entry ? i * 70 : null); });
+    var v = $("john");
+    v.hidden = false;
+    if (entry) {
+      v.classList.add("enter");
+      johnSay(JLINES.enter);
+      say("600枚達成。アメリカ人店員のジョンがやってきて、売り場の商品をすべてアメリカの商品に入れ替えました。");
+      chime([392, 523.3, 659.3, 784, 1046.5]);
+      setTimeout(function () {
+        if (ikue.on) ikueSay("あれ…おはぎが、ドーナツになっています。");
+        if (rival.on) bubble("商品が、ぜんぶアメリカに…?");
+        if (yam.on) yBubble("おはぎはどこへ行ったんじゃ。");
+      }, 1800);
+    } else {
+      johnSay(pick(JLINES.restock));
+    }
+    sizeHand();
+  }
+
+  /* ---------- 閉店ボタンと、最後のリザルト ---------- */
+  var RANKS = [[0, "見習いシール係"], [100, "一人前のシール係"], [200, "ベテランシール係"], [300, "主任シール係"], [400, "シール貼り名人"], [600, "伝説のシール係"]];
+  var dlg = $("result");
+
+  function openResult() {
+    release();
+    var rows = [["営業日数", state.day + "日"], ["貼った枚数", state.count + "枚"], ["売れた商品", state.sold + "点"]];
+    if (oda.on) rows.push(["銃の発射数", state.shots + "発"]);
+    if (rival.on) rows.push(["たなか勝負", state.w + "勝 " + state.l + "敗"]);
+    if (yam.on) rows.push(["やまだ勝負", state.yw + "勝 " + state.yl + "敗"]);
+    $("resList").innerHTML = rows.map(function (r) {
+      return "<div><dt>" + r[0] + '</dt><span class="lead"></span><dd>' + r[1] + "</dd></div>";
+    }).join("");
+
+    var met = [];
+    if (rival.on) met.push("たなか");
+    if (yam.on) met.push("やまだ");
+    if (ikue.on) met.push("いくえ");
+    if (oda.on) met.push("おださん");
+    if (robo.on) met.push("シリボ");
+    if (john.on) met.push("ジョン");
+    $("resMet").textContent = "出会った顔ぶれ：" + (met.length ? met.join("・") : "まだ誰にも会っていません");
+
+    var rank = RANKS[0][1];
+    RANKS.forEach(function (r) { if (state.count >= r[0]) rank = r[1]; });
+    $("resRank").textContent = rank;
+
+    var now = new Date();
+    $("resDate").textContent = (now.getMonth() + 1) + "/" + now.getDate() + "　" + pad(now.getHours(), 2) + ":" + pad(now.getMinutes(), 2);
+
+    paused = true;
+    try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); }
+  }
+
+  function closeResult() {
+    if (dlg.close) { try { dlg.close(); } catch (e) { dlg.removeAttribute("open"); } } else dlg.removeAttribute("open");
+    paused = false;
+  }
+
+  function seedStickers() {
+    var k0 = KINDS[0];
+    addSticker(slots[1], k0, 58, 46, -8, true);
+    addSticker(slots[6], k0, 44, 40, 9, true);
+    addSticker(slots[9], k0, 62, 52, -5, true);
+    [1, 6, 9].forEach(function (i) { schedule(slots[i], 9000 + i * 500); slots[i].owner = "me"; });
+  }
+
+  // 記録を消して、最初の売り場に戻す
+  function resetGame() {
+    clearTimeout(rival.timer);
+    clearTimeout(yam.timer);
+    clearInterval(gun.timer);
+    gun.held = false;
+    gun.suppress = false;
+    slots.forEach(function (s) { clearTimeout(s.timer); });
+
+    rival.on = false; rival.me = rival.tan = rival.stMe = rival.stTan = 0; rival.lastSay = 0;
+    yam.on = false; yam.peeled = 0; yam.missed = 0; yam.lastSay = 0;
+    ikue.on = false; ikue.lastSay = 0;
+    oda.on = false; oda.lastSay = 0;
+    john.on = false; john.lastSay = 0;
+    gun.on = false; gun.acc = 0;
+    boost = 1;
+    stopRobos();
+    resetCast();
+
+    ["versus", "yamada", "oda", "john"].forEach(function (id) {
+      var v = $(id);
+      v.hidden = true;
+      v.classList.remove("awake", "enter");
+      var b = v.querySelector(".awake-badge");
+      if (b) b.parentNode.removeChild(b);
+    });
+    ["bubble", "yaBubble", "odaBubble", "johnBubble"].forEach(function (id) { $(id).innerHTML = ""; });
+    $("odaShots").textContent = "0";
+    document.body.classList.remove("usa");
+    $("eyebrow").textContent = "スーパー ゆうやけ　惣菜コーナー";
+    rhandEl.classList.remove("show");
+    yhandEl.classList.remove("show");
+
+    caseEl.innerHTML = "";
+    slots.length = 0;
+    rowEls.length = 0;
+    n = 0;
+    ROWS.forEach(function (row, ri) { if (!row.late) buildRow(ri, false); });
+
+    state.count = 0; state.day = 1; state.min = 0;
+    state.w = state.l = state.yw = state.yl = state.shots = state.sold = 0;
+    seedStickers();
+    say(KINDS[0].say);
+    renderHud();
+    renderVersus();
+    renderYam();
+    save();
+    sizeHand();
+  }
+
+  /* ---------- キャラ紹介の折りたたみ ---------- */
+  var castBox = $("castBox");
+  var castCount = 0;
+
+  // 登場しているキャラの顔を、閉じた状態の見出しに並べる。増えたときは NEW を付ける。
+  function refreshCast(silent) {
+    var panels = Array.prototype.slice.call(document.querySelectorAll(".cast > .versus:not([hidden])"));
+    castBox.hidden = panels.length === 0;
+    $("cbFaces").innerHTML = panels.map(function (p) { return p.querySelector(".face").innerHTML; }).join("");
+    $("cbCount").textContent = "仲間 " + panels.length + "人";
+    if (!silent && panels.length > castCount && !castBox.open) castBox.classList.add("has-new");
+    castCount = panels.length;
+  }
+
+  function resetCast() {
+    castBox.open = false;
+    castBox.classList.remove("has-new");
+    castCount = 0;
+  }
+
+  new MutationObserver(function () { refreshCast(); })
+    .observe(document.querySelector(".cast"), { attributes: true, attributeFilter: ["hidden"], subtree: true });
+  castBox.addEventListener("toggle", function () { if (castBox.open) castBox.classList.remove("has-new"); });
+
+  $("closeShop").addEventListener("click", openResult);
+  $("resClose").addEventListener("click", closeResult);
+  $("resReset").addEventListener("click", function () { closeResult(); resetGame(); });
+  dlg.addEventListener("close", function () { paused = false; });
+
+  /* ---------- 開店 ---------- */
+  $("mute").setAttribute("aria-pressed", String(!state.muted));
+  $("mute").textContent = state.muted ? "音 OFF" : "音 ON";
+  say(kindAt(state.min).say);
+  renderHud();
+
+  // 貼りかけの商品を並べておく（最初の操作が来るまで少し待つ）
+  seedStickers();
+
+  if (state.count >= RIVAL_AT) startRival(false);
+  if (state.count >= YAMADA_AT) startYamada(false);
+  if (state.count >= IKUE_AT) startIkue(false);
+  if (state.count >= AWAKE_AT) { awaken(false); startOda(false); }
+  syncRobos(false);
+  if (state.count >= JOHN_AT) startJohn(false);
+  refreshCast(true);  // 読み込み時に出ていたキャラには NEW を付けない
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeHand);
+  sizeHand();
+})();
+</script>
+</body>
+</html>
