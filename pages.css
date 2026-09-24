@@ -1,0 +1,209 @@
+/* 追加ページ（遊び方・キャラクター・更新情報・このゲームについて・プライバシー）と、トップの文章セクションの共通スタイル */
+
+.sub-page,
+.seo-wrap,
+.site-head,
+.site-foot {
+  --p-red: #d7191f;
+  --p-red-d: #a80f16;
+  --p-yellow: #ffe11a;
+  --p-ink: #14233c;
+  --p-ink-2: #4b5b6b;
+  --p-line: #c5d0d2;
+  --p-blue: #2358b8;
+  --p-paper: #ffffff;
+  --p-display: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --p-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+/* ---------- 追加ページの土台 ---------- */
+body.sub-page {
+  margin: 0;
+  background-color: #e8efeb;
+  background-image:
+    linear-gradient(rgba(20, 35, 60, .06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 35, 60, .06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  color: var(--p-ink);
+  font-family: var(--p-body);
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sub-page .awning {
+  height: 36px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='36'><path d='M0 0H28V22a14 14 0 0 1-28 0z' fill='%23d7191f'/><path d='M28 0H56V22a14 14 0 0 1-28 0z' fill='%23ffffff' stroke='%23c5d0d2' stroke-width='1'/></svg>") repeat-x 0 0 / 56px 36px;
+  filter: drop-shadow(0 3px 2px rgba(20, 35, 60, .18));
+}
+
+.site-head {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 18px 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  font-family: var(--p-body);
+}
+
+.site-head .brand {
+  font-family: var(--p-display);
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--p-ink);
+  text-decoration: none;
+}
+.site-head .brand span { color: var(--p-red); }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.site-nav a { color: var(--p-blue); text-decoration: none; padding: 2px 0; }
+.site-nav a:hover { text-decoration: underline; }
+.site-nav a[aria-current="page"] { color: var(--p-ink); border-bottom: 3px solid var(--p-red); }
+
+/* ---------- 本文 ---------- */
+.doc,
+.seo-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  color: var(--p-ink);
+  font-family: var(--p-body);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.doc h1 {
+  margin: 8px 0 12px;
+  font-family: var(--p-display);
+  font-weight: 400;
+  font-size: clamp(26px, 5.4vw, 40px);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.doc h2,
+.seo-wrap h2 {
+  margin: 40px 0 12px;
+  padding: 4px 22px 6px 12px;
+  display: inline-block;
+  background: var(--p-red);
+  color: #fff;
+  font-family: var(--p-display);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.4;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 50%, 100% 100%, 0 100%);
+}
+
+.doc h3,
+.seo-wrap h3 {
+  margin: 24px 0 6px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.doc p,
+.seo-wrap p { margin: 0 0 14px; }
+
+.doc .lead { font-size: 17px; font-weight: 700; color: var(--p-ink-2); }
+
+.doc ul,
+.doc ol,
+.seo-wrap ul,
+.seo-wrap ol { margin: 0 0 14px; padding-left: 1.4em; }
+.doc li,
+.seo-wrap li { margin-bottom: 6px; }
+
+.doc a,
+.seo-wrap a { color: var(--p-blue); font-weight: 700; }
+
+.crumbs { font-size: 13px; color: var(--p-ink-2); }
+.crumbs a { font-weight: 700; }
+
+.note-box {
+  margin: 16px 0;
+  padding: 12px 16px;
+  background: var(--p-yellow);
+  border: 3px solid var(--p-red);
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.card {
+  margin: 0 0 16px;
+  padding: 14px 16px 6px;
+  background: var(--p-paper);
+  border: 2px solid var(--p-line);
+  border-radius: 8px;
+}
+.card h3 { margin-top: 0; }
+.card .badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 10px;
+  background: var(--p-ink);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 900;
+  vertical-align: 2px;
+}
+
+.tbl-wrap { overflow-x: auto; margin: 0 0 16px; }
+.tbl { width: 100%; border-collapse: collapse; background: var(--p-paper); font-size: 15px; line-height: 1.6; }
+.tbl th,
+.tbl td { padding: 8px 12px; border: 1px solid var(--p-line); text-align: left; vertical-align: top; }
+.tbl th { background: #f2f6f4; white-space: nowrap; }
+.tbl td:first-child { white-space: nowrap; font-weight: 900; }
+
+.faq dt { margin-top: 18px; font-weight: 900; }
+.faq dt::before { content: "Q. "; color: var(--p-red); }
+.faq dd { margin: 4px 0 0; }
+.faq dd::before { content: "A. "; font-weight: 900; color: var(--p-blue); }
+
+.play-cta {
+  display: inline-block;
+  margin: 8px 0 0;
+  padding: 10px 22px 12px;
+  background: var(--p-red);
+  color: #fff !important;
+  border-radius: 8px;
+  border-bottom: 4px solid var(--p-red-d);
+  font-family: var(--p-display);
+  font-size: 18px;
+  font-weight: 400 !important;
+  text-decoration: none;
+}
+
+.log dt { margin-top: 20px; font-weight: 900; }
+.log dd { margin: 4px 0 0; }
+
+/* トップの文章セクションの区切り */
+.seo-wrap { border-top: 6px solid var(--p-red); background: #f7faf8; max-width: none; padding-inline: 0; }
+.seo-wrap > .seo-inner { max-width: 880px; margin: 0 auto; padding-inline: 16px; }
+
+/* ---------- フッター ---------- */
+.site-foot {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px 16px 40px;
+  border-top: 2px solid var(--p-line);
+  font-family: var(--p-body);
+  font-size: 13px;
+  color: var(--p-ink-2);
+}
+.site-foot .site-nav { margin-bottom: 8px; }
+.site-foot p { margin: 0; }
+
+.sub-page a:focus-visible,
+.seo-wrap a:focus-visible,
+.site-foot a:focus-visible { outline: 3px solid var(--p-ink); outline-offset: 2px; border-radius: 2px; }
