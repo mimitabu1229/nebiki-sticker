@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mimitabu1229.github.io/nebiki-sticker/sitemap.xml
+Sitemap: https://nebikigames.com/sitemap.xml
